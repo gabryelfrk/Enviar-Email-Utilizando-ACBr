@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/03/10 08:55:36.000.328,=C:\Users\GABRYEL\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/03/10 08:56:30.000.631,C:\Users\GABRYEL\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\GABRYEL\Desktop\EnvioEmail\UEnvioEmail.dfm</Transaction>
+    <Transaction>2023/03/10 08:56:30.000.631,C:\Users\GABRYEL\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\GABRYEL\Desktop\EnvioEmail\UEnvioEmail.pas</Transaction>
+    <Transaction>2023/03/10 08:56:47.000.462,C:\Users\GABRYEL\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\GABRYEL\Desktop\EnvioEmail\PrjEnviaEmail.dproj</Transaction>
+    <Transaction>2023/03/10 08:59:38.000.244,=C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas</Transaction>
+    <Transaction>2023/03/10 09:00:13.000.770,C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas=C:\Users\GABRYEL\Desktop\EnvioEmail\Classe\ClasseEmailACBR.pas</Transaction>
+    <Transaction>2023/03/10 09:09:24.000.198,=C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas</Transaction>
+    <Transaction>2023/03/10 09:09:54.000.714,C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.dfm=C:\Users\GABRYEL\Desktop\EnvioEmail\UConexao.dfm</Transaction>
+    <Transaction>2023/03/10 09:09:54.000.714,C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas=C:\Users\GABRYEL\Desktop\EnvioEmail\UConexao.pas</Transaction>
+    <Transaction>2023/03/10 09:25:48.000.063,C:\Users\GABRYEL\Desktop\EnvioEmail\UConfigEnvioEmail.dfm=C:\Users\GABRYEL\Desktop\EnvioEmail\UEnvioEmail.dfm</Transaction>
+    <Transaction>2023/03/10 09:25:48.000.063,C:\Users\GABRYEL\Desktop\EnvioEmail\UConfigEnvioEmail.pas=C:\Users\GABRYEL\Desktop\EnvioEmail\UEnvioEmail.pas</Transaction>
+    <Transaction>2023/03/10 09:32:08.000.967,C:\Users\GABRYEL\Desktop\EnvioEmail\UFrmConfigEmail.pas=C:\Users\GABRYEL\Desktop\EnvioEmail\UConfigEnvioEmail.pas</Transaction>
+    <Transaction>2023/03/10 09:32:08.000.967,C:\Users\GABRYEL\Desktop\EnvioEmail\UFrmConfigEmail.dfm=C:\Users\GABRYEL\Desktop\EnvioEmail\UConfigEnvioEmail.dfm</Transaction>
+    <Transaction>2023/03/10 09:45:35.000.193,=C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas</Transaction>
+    <Transaction>2023/03/10 09:46:01.000.370,C:\Users\GABRYEL\Desktop\EnvioEmail\UEnviaEmail.dfm=C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.dfm</Transaction>
+    <Transaction>2023/03/10 09:46:01.000.370,C:\Users\GABRYEL\Desktop\EnvioEmail\UEnviaEmail.pas=C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas</Transaction>
+    <Transaction>2023/03/10 10:17:14.000.183,=C:\Users\GABRYEL\Desktop\EnvioEmail\Unit1.pas</Transaction>
+    <Transaction>2023/03/10 10:17:52.000.640,C:\Users\GABRYEL\Desktop\EnvioEmail\UConexao.pas=</Transaction>
+    <Transaction>2023/03/10 10:20:04.000.517,=C:\Users\GABRYEL\Desktop\EnvioEmail\UConexao.pas</Transaction>
+    <Transaction>2023/03/10 10:20:27.000.785,=C:\Users\GABRYEL\Desktop\EnvioEmail\DModule.pas</Transaction>
+    <Transaction>2023/03/10 10:23:58.000.907,C:\Users\GABRYEL\Desktop\EnvioEmail\DModule.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

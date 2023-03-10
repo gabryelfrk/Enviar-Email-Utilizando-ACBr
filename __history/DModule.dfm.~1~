@@ -1,0 +1,3367 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 532
+  Width = 687
+  object DSEmpresas: TDataSource
+    DataSet = TBEmpresas
+    Left = 120
+    Top = 208
+  end
+  object TBHistorico: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    BeforeDelete = TBHistoricoBeforeDelete
+    TableName = 'HISTORIC'
+    Left = 32
+    Top = 256
+    object TBHistoricoCOD_HISTORICO: TStringField
+      DisplayLabel = 'Codigo'
+      FieldName = 'cod_historico'
+      OnSetText = TBHistoricoCOD_HISTORICOSetText
+      Size = 4
+    end
+    object TBHistoricoCOD_CONTA: TStringField
+      FieldName = 'cod_conta'
+      Size = 10
+    end
+    object TBHistoricodescr_historico: TStringField
+      FieldName = 'descr_historico'
+      Size = 30
+    end
+  end
+  object DSHistorico: TDataSource
+    DataSet = TBHistorico
+    Left = 120
+    Top = 256
+  end
+  object TBSaldo: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'saldo'
+    Left = 32
+    Top = 304
+    object TBSaldoDia_Mes_Ano: TDateField
+      FieldName = 'Dia_Mes_Ano'
+    end
+    object TBSaldoSaldo: TFloatField
+      FieldName = 'Saldo'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object TBSaldoFolha: TSmallintField
+      FieldName = 'Folha'
+    end
+  end
+  object DSSaldo: TDataSource
+    DataSet = TBSaldo
+    Left = 120
+    Top = 304
+  end
+  object DSSenhas: TDataSource
+    DataSet = TBSenhas
+    Left = 312
+    Top = 304
+  end
+  object TBSenhas: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'senhas'
+    Left = 224
+    Top = 304
+    object TBSenhasnome: TStringField
+      FieldName = 'nome'
+      Size = 15
+    end
+    object TBSenhasnomecompleto: TStringField
+      FieldName = 'nomecompleto'
+      Size = 25
+    end
+    object TBSenhasnivel: TStringField
+      FieldName = 'nivel'
+      Size = 1
+    end
+    object TBSenhassenha: TStringField
+      FieldName = 'senha'
+      Size = 15
+    end
+    object TBSenhasgrupo: TStringField
+      FieldName = 'grupo'
+      Size = 2
+    end
+    object TBSenhasflag: TStringField
+      FieldName = 'flag'
+      Size = 1
+    end
+  end
+  object Table1: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    IndexName = 'IDXDia_Mes_Ano'
+    TableName = 'caixa'
+    Left = 495
+    Top = 9
+    object Table1Sequencia: TAutoIncField
+      FieldName = 'Sequencia'
+    end
+    object Table1Dia_Mes_Ano: TDateField
+      FieldName = 'Dia_Mes_Ano'
+    end
+    object Table1Valor: TFloatField
+      FieldName = 'Valor'
+    end
+    object Table1E_S: TStringField
+      FieldName = 'E_S'
+      Size = 1
+    end
+    object Table1HISTORICO: TStringField
+      FieldName = 'HISTORICO'
+      Size = 50
+    end
+    object Table1COD_HISTORICO: TStringField
+      FieldName = 'COD_HISTORICO'
+      Size = 3
+    end
+    object Table1COD_CONTA: TStringField
+      FieldName = 'COD_CONTA'
+      Size = 3
+    end
+  end
+  object Table2: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'saldo'
+    Left = 496
+    Top = 104
+    object Table2Dia_Mes_Ano: TDateField
+      FieldName = 'Dia_Mes_Ano'
+    end
+    object Table2Saldo: TFloatField
+      FieldName = 'Saldo'
+    end
+  end
+  object TBINDICE: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'indice'
+    Left = 224
+    Top = 208
+    object TBINDICEcgc: TStringField
+      FieldName = 'cgc'
+      Size = 18
+    end
+    object TBINDICErazao_social: TStringField
+      FieldName = 'razao_social'
+      Size = 80
+    end
+    object TBINDICEendereco: TStringField
+      FieldName = 'endereco'
+      Size = 40
+    end
+    object TBINDICEbairro: TStringField
+      FieldName = 'bairro'
+    end
+    object TBINDICEcidade: TStringField
+      FieldName = 'cidade'
+    end
+    object TBINDICEestado: TStringField
+      FieldName = 'estado'
+      Size = 2
+    end
+    object TBINDICEcep: TStringField
+      FieldName = 'cep'
+      Size = 9
+    end
+    object TBINDICEtel: TStringField
+      FieldName = 'tel'
+      Size = 14
+    end
+    object TBINDICExcc: TStringField
+      FieldName = 'xcc'
+    end
+    object TBINDICEs_contabil: TStringField
+      FieldName = 's_contabil'
+      Size = 1
+    end
+    object TBINDICEs_fiscal: TStringField
+      FieldName = 's_fiscal'
+      Size = 1
+    end
+    object TBINDICEs_pessoal: TStringField
+      FieldName = 's_pessoal'
+      Size = 1
+    end
+    object TBINDICEs_caixa: TStringField
+      FieldName = 's_caixa'
+      Size = 1
+    end
+    object TBINDICEs_gerenciador: TStringField
+      FieldName = 's_gerenciador'
+      Size = 1
+    end
+    object TBINDICExpercpis: TBCDField
+      FieldName = 'xpercpis'
+      Precision = 19
+    end
+    object TBINDICExcodcpis: TStringField
+      FieldName = 'xcodcpis'
+      Size = 6
+    end
+    object TBINDICExdpis: TStringField
+      FieldName = 'xdpis'
+      Size = 2
+    end
+    object TBINDICExpercpisd: TBCDField
+      FieldName = 'xpercpisd'
+      Precision = 19
+    end
+    object TBINDICExcodcpisd: TStringField
+      FieldName = 'xcodcpisd'
+      Size = 6
+    end
+    object TBINDICExdpisd: TStringField
+      FieldName = 'xdpisd'
+      Size = 2
+    end
+    object TBINDICExpercpisr: TBCDField
+      FieldName = 'xpercpisr'
+      Precision = 19
+    end
+    object TBINDICExcodcpisr: TStringField
+      FieldName = 'xcodcpisr'
+      Size = 6
+    end
+    object TBINDICExdpisr: TStringField
+      FieldName = 'xdpisr'
+      Size = 2
+    end
+    object TBINDICExperccofin: TBCDField
+      FieldName = 'xperccofin'
+      Precision = 19
+    end
+    object TBINDICExcodccofin: TStringField
+      FieldName = 'xcodccofin'
+      Size = 6
+    end
+    object TBINDICExdcofins: TStringField
+      FieldName = 'xdcofins'
+      Size = 2
+    end
+    object TBINDICExperccs: TBCDField
+      FieldName = 'xperccs'
+      Precision = 19
+    end
+    object TBINDICExcodccs: TStringField
+      FieldName = 'xcodccs'
+      Size = 6
+    end
+    object TBINDICExdcs: TStringField
+      FieldName = 'xdcs'
+      Size = 2
+    end
+    object TBINDICExcodccsme: TStringField
+      FieldName = 'xcodccsme'
+      Size = 6
+    end
+    object TBINDICExperccsme: TBCDField
+      FieldName = 'xperccsme'
+      Precision = 19
+    end
+    object TBINDICExdcsme: TStringField
+      FieldName = 'xdcsme'
+      Size = 2
+    end
+    object TBINDICExcodcirpj: TStringField
+      FieldName = 'xcodcirpj'
+      Size = 6
+    end
+    object TBINDICExpercirpj: TBCDField
+      FieldName = 'xpercirpj'
+      Precision = 19
+    end
+    object TBINDICExdirpj: TStringField
+      FieldName = 'xdirpj'
+      Size = 2
+    end
+    object TBINDICExcodcsimp: TStringField
+      FieldName = 'xcodcsimp'
+      Size = 6
+    end
+    object TBINDICExpercsimp: TBCDField
+      FieldName = 'xpercsimp'
+      Precision = 19
+    end
+    object TBINDICExdsimp: TStringField
+      FieldName = 'xdsimp'
+      Size = 2
+    end
+    object TBINDICExmodsimp: TStringField
+      FieldName = 'xmodsimp'
+      Size = 1
+    end
+    object TBINDICExirpj1: TBCDField
+      FieldName = 'xirpj1'
+      DisplayFormat = '##.000'
+      Precision = 19
+    end
+    object TBINDICExirpj2: TBCDField
+      FieldName = 'xirpj2'
+      DisplayFormat = '##.000'
+      Precision = 19
+    end
+    object TBINDICExirpj3: TBCDField
+      FieldName = 'xirpj3'
+      DisplayFormat = '##.000'
+      Precision = 19
+    end
+    object TBINDICExirpj4: TBCDField
+      FieldName = 'xirpj4'
+      DisplayFormat = '##.000'
+      Precision = 19
+    end
+    object TBINDICExopcaof1: TStringField
+      FieldName = 'xopcaof1'
+      Size = 1
+    end
+    object TBINDICExopcaof2: TStringField
+      FieldName = 'xopcaof2'
+      Size = 1
+    end
+    object TBINDICExpme01: TBCDField
+      FieldName = 'xpme01'
+      Precision = 19
+    end
+    object TBINDICExpme02: TBCDField
+      FieldName = 'xpme02'
+      Precision = 19
+    end
+    object TBINDICExpme03: TBCDField
+      FieldName = 'xpme03'
+      Precision = 19
+    end
+    object TBINDICExpme04: TBCDField
+      FieldName = 'xpme04'
+      Precision = 19
+    end
+    object TBINDICExpme05: TBCDField
+      FieldName = 'xpme05'
+      Precision = 19
+    end
+    object TBINDICExpme06: TBCDField
+      FieldName = 'xpme06'
+      Precision = 19
+    end
+    object TBINDICExpme07: TBCDField
+      FieldName = 'xpme07'
+      Precision = 19
+    end
+    object TBINDICExpme08: TBCDField
+      FieldName = 'xpme08'
+      Precision = 19
+    end
+    object TBINDICExtipodarf: TStringField
+      FieldName = 'xtipodarf'
+      Size = 1
+    end
+    object TBINDICExred1: TBCDField
+      FieldName = 'xred1'
+      Precision = 19
+    end
+    object TBINDICExred2: TBCDField
+      FieldName = 'xred2'
+      Precision = 19
+    end
+    object TBINDICExred3: TBCDField
+      FieldName = 'xred3'
+      Precision = 19
+    end
+    object TBINDICExred4: TBCDField
+      FieldName = 'xred4'
+      Precision = 19
+    end
+    object TBINDICExred5: TBCDField
+      FieldName = 'xred5'
+      Precision = 19
+    end
+    object TBINDICExred6: TBCDField
+      FieldName = 'xred6'
+      Precision = 19
+    end
+    object TBINDICExred7: TBCDField
+      FieldName = 'xred7'
+      Precision = 19
+    end
+    object TBINDICExred8: TBCDField
+      FieldName = 'xred8'
+      Precision = 19
+    end
+    object TBINDICEm_recibo: TMemoField
+      FieldName = 'm_recibo'
+      BlobType = ftMemo
+    end
+    object TBINDICEm_boleto: TMemoField
+      FieldName = 'm_boleto'
+      BlobType = ftMemo
+    end
+    object TBINDICEetiqueta_p: TMemoField
+      FieldName = 'etiqueta_p'
+      BlobType = ftMemo
+    end
+    object TBINDICExarrint: TStringField
+      FieldName = 'xarrint'
+      Size = 1
+    end
+    object TBINDICExcorrigir: TStringField
+      FieldName = 'xcorrigir'
+      Size = 1
+    end
+    object TBINDICExicmsretsn: TStringField
+      FieldName = 'xicmsretsn'
+      Size = 1
+    end
+    object TBINDICExipinasn: TStringField
+      FieldName = 'xipinasn'
+      Size = 1
+    end
+    object TBINDICExcampo3839: TStringField
+      FieldName = 'xcampo3839'
+      Size = 1
+    end
+    object TBINDICExsrpcf: TStringField
+      FieldName = 'xsrpcf'
+      Size = 1
+    end
+    object TBINDICEdum: TSmallintField
+      FieldName = 'dum'
+    end
+    object TBINDICEddf: TSmallintField
+      FieldName = 'ddf'
+    end
+    object TBINDICExmingrps: TBCDField
+      FieldName = 'xmingrps'
+      Precision = 19
+    end
+    object TBINDICExutilmodp10: TStringField
+      FieldName = 'xutilmodp10'
+      Size = 1
+    end
+    object TBINDICExmodeloimp: TStringField
+      FieldName = 'xmodeloimp'
+      Size = 1
+    end
+    object TBINDICExfonte10cpi: TStringField
+      FieldName = 'xfonte10cpi'
+      Size = 50
+    end
+    object TBINDICExfonte20cpi: TStringField
+      FieldName = 'xfonte20cpi'
+      Size = 50
+    end
+    object TBINDICExnumero: TStringField
+      FieldName = 'xnumero'
+      Size = 6
+    end
+    object TBINDICExresci42: TStringField
+      FieldName = 'xresci42'
+      Size = 30
+    end
+    object TBINDICExresci43: TStringField
+      FieldName = 'xresci43'
+      Size = 30
+    end
+    object TBINDICExresci44: TStringField
+      FieldName = 'xresci44'
+      Size = 30
+    end
+    object TBINDICExresci45: TStringField
+      FieldName = 'xresci45'
+      Size = 30
+    end
+    object TBINDICExresci51: TStringField
+      FieldName = 'xresci51'
+      Size = 30
+    end
+    object TBINDICExresci52: TStringField
+      FieldName = 'xresci52'
+      Size = 30
+    end
+    object TBINDICExresci53: TStringField
+      FieldName = 'xresci53'
+      Size = 30
+    end
+    object TBINDICExversao: TStringField
+      FieldName = 'xversao'
+      Size = 7
+    end
+    object TBINDICEs_ativo: TStringField
+      FieldName = 's_ativo'
+      Size = 1
+    end
+    object TBINDICEs_lalur: TStringField
+      FieldName = 's_lalur'
+      Size = 1
+    end
+    object TBINDICEs_print: TStringField
+      FieldName = 's_print'
+      Size = 1
+    end
+    object TBINDICExconvertehora: TStringField
+      FieldName = 'xconvertehora'
+      Size = 1
+    end
+    object TBINDICExdiretor: TStringField
+      FieldName = 'xdiretor'
+      Size = 40
+    end
+    object TBINDICExdrg: TStringField
+      FieldName = 'xdrg'
+      Size = 14
+    end
+    object TBINDICExdcpf: TStringField
+      FieldName = 'xdcpf'
+      Size = 11
+    end
+    object TBINDICExnlicenca: TStringField
+      FieldName = 'xnlicenca'
+      Size = 2
+    end
+    object TBINDICExfoncondensed: TStringField
+      FieldName = 'xfoncondensed'
+      Size = 40
+    end
+    object TBINDICExfonnormal: TStringField
+      FieldName = 'xfonnormal'
+      Size = 40
+    end
+    object TBINDICExfon12cpi: TStringField
+      FieldName = 'xfon12cpi'
+      Size = 40
+    end
+    object TBINDICExfon10cpi: TStringField
+      FieldName = 'xfon10cpi'
+      Size = 40
+    end
+    object TBINDICExfon12cpireduz: TStringField
+      FieldName = 'xfon12cpireduz'
+      Size = 40
+    end
+    object TBINDICExcodcliente: TStringField
+      FieldName = 'xcodcliente'
+      Size = 7
+    end
+    object TBINDICEs_web: TStringField
+      FieldName = 's_web'
+      Size = 1
+    end
+    object TBINDICEs_tipoweb: TStringField
+      FieldName = 's_tipoweb'
+      Size = 1
+    end
+    object TBINDICEs_ledfirst: TStringField
+      FieldName = 's_ledfirst'
+      Size = 1
+    end
+    object TBINDICExdata_atu: TDateField
+      FieldName = 'xdata_atu'
+    end
+    object TBINDICExflag_atu: TStringField
+      FieldName = 'xflag_atu'
+      Size = 1
+    end
+    object TBINDICExcabousb: TStringField
+      FieldName = 'xcabousb'
+      Size = 1
+    end
+    object TBINDICEinscr_estadual: TStringField
+      FieldName = 'inscr_estadual'
+      Size = 16
+    end
+    object TBINDICExemail: TStringField
+      FieldName = 'xemail'
+      Size = 40
+    end
+    object TBINDICExcod_mun: TStringField
+      DisplayWidth = 7
+      FieldName = 'xcod_mun'
+      Size = 7
+    end
+    object TBINDICExlogoemp: TBlobField
+      FieldName = 'xlogoemp'
+    end
+    object TBINDICExid: TAutoIncField
+      FieldName = 'xid'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object TBINDICExmsg1: TStringField
+      FieldName = 'xmsg1'
+      Size = 50
+    end
+    object TBINDICExmsg2: TStringField
+      FieldName = 'xmsg2'
+      Size = 50
+    end
+    object TBINDICExpriorimens: TStringField
+      FieldName = 'xpriorimens'
+      Size = 3
+    end
+    object TBINDICExdias_mes: TStringField
+      FieldName = 'xdias_mes'
+      Size = 1
+    end
+    object TBINDICEcomplemento: TStringField
+      FieldName = 'complemento'
+      Size = 40
+    end
+    object TBINDICExmes_prop: TStringField
+      FieldName = 'xmes_prop'
+      Size = 1
+    end
+    object TBINDICExJustaCausa_FeriasPropor: TStringField
+      FieldName = 'xJustaCausa_FeriasPropor'
+      FixedChar = True
+      Size = 1
+    end
+    object TBINDICExassunto_email: TStringField
+      FieldName = 'xassunto_email'
+      Size = 100
+    end
+    object TBINDICExcorpo_email: TStringField
+      FieldName = 'xcorpo_email'
+      Size = 250
+    end
+    object TBINDICExassunto_email_adian: TStringField
+      FieldName = 'xassunto_email_adian'
+      Size = 100
+    end
+    object TBINDICExcorpo_email_adian: TStringField
+      FieldName = 'xcorpo_email_adian'
+      Size = 250
+    end
+    object TBINDICExassunto_email_13: TStringField
+      FieldName = 'xassunto_email_13'
+      Size = 100
+    end
+    object TBINDICExcorpo_email_13: TStringField
+      FieldName = 'xcorpo_email_13'
+      Size = 250
+    end
+    object TBINDICExassunto_email_hono: TStringField
+      FieldName = 'xassunto_email_hono'
+      Size = 100
+    end
+    object TBINDICExcorpo_email_hono: TStringField
+      FieldName = 'xcorpo_email_hono'
+      Size = 250
+    end
+    object TBINDICExaviso184_2012: TStringField
+      FieldName = 'xaviso184_2012'
+      Size = 1
+    end
+    object TBINDICEInativarTodas_EMP_eSocial: TStringField
+      FieldName = 'InativarTodas_EMP_eSocial'
+      FixedChar = True
+      Size = 1
+    end
+    object TBINDICEDescRecibo13: TStringField
+      FieldName = 'DescRecibo13'
+      Size = 250
+    end
+    object TBINDICEfgts_inss_inter: TStringField
+      FieldName = 'fgts_inss_inter'
+      Size = 1
+    end
+    object TBINDICEferias_terc_inter: TStringField
+      FieldName = 'ferias_terc_inter'
+      Size = 1
+    end
+    object TBINDICEAgencia: TStringField
+      FieldName = 'Agencia'
+      Size = 4
+    end
+    object TBINDICEAgenciaDigito: TStringField
+      FieldName = 'AgenciaDigito'
+      FixedChar = True
+      Size = 1
+    end
+    object TBINDICECodigoCedente: TStringField
+      FieldName = 'CodigoCedente'
+      Size = 60
+    end
+    object TBINDICECodigoTransmissao: TStringField
+      FieldName = 'CodigoTransmissao'
+      Size = 60
+    end
+    object TBINDICEContaDigito: TStringField
+      FieldName = 'ContaDigito'
+      FixedChar = True
+      Size = 1
+    end
+    object TBINDICEConvenio: TStringField
+      FieldName = 'Convenio'
+      Size = 30
+    end
+    object TBINDICETextoAntecipacaoFerias: TMemoField
+      FieldName = 'TextoAntecipacaoFerias'
+      BlobType = ftMemo
+    end
+    object TBINDICEexibeNfPaginacao: TIntegerField
+      FieldName = 'exibeNfPaginacao'
+    end
+    object TBINDICEinfoLed: TDateTimeField
+      FieldName = 'infoLed'
+    end
+    object TBINDICEbuscaDinamicaLancsContabil: TStringField
+      FieldName = 'buscaDinamicaLancsContabil'
+      FixedChar = True
+      Size = 1
+    end
+    object TBINDICEexibeContPaginacao: TIntegerField
+      FieldName = 'exibeContPaginacao'
+    end
+    object TBINDICEPularCampoComEnter: TIntegerField
+      FieldName = 'PularCampoComEnter'
+    end
+    object TBINDICENaoImportarBC_ALIQ_ISS: TIntegerField
+      FieldName = 'NaoImportarBC_ALIQ_ISS'
+    end
+    object TBINDICERepetirDadosDuplicatas: TIntegerField
+      FieldName = 'RepetirDadosDuplicatas'
+    end
+    object TBINDICEEditarConsultarLancsContabil: TStringField
+      FieldName = 'EditarConsultarLancsContabil'
+      FixedChar = True
+      Size = 1
+    end
+    object TBINDICEHabilitarEFDReinfFiscal: TStringField
+      FieldName = 'HabilitarEFDReinfFiscal'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DSINDICE: TDataSource
+    DataSet = TBINDICE
+    Left = 312
+    Top = 208
+  end
+  object DSFEDERACA: TDataSource
+    DataSet = TBFEDERACA
+    Left = 504
+    Top = 208
+  end
+  object DSConfDARF: TDataSource
+    DataSet = TBCONFDARF
+    Left = 312
+    Top = 256
+  end
+  object TBCONFDARF: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'confdarf'
+    Left = 224
+    Top = 256
+    object TBCONFDARFALTURA: TSmallintField
+      FieldName = 'ALTURA'
+    end
+    object TBCONFDARFLARGURA: TSmallintField
+      FieldName = 'LARGURA'
+    end
+    object TBCONFDARFC_01NOME: TSmallintField
+      FieldName = 'C_01NOME'
+    end
+    object TBCONFDARFL_01NOME: TSmallintField
+      FieldName = 'L_01NOME'
+    end
+    object TBCONFDARFL_01TEL: TSmallintField
+      FieldName = 'L_01TEL'
+    end
+    object TBCONFDARFC_DESCR: TSmallintField
+      FieldName = 'C_DESCR'
+    end
+    object TBCONFDARFL_DESCR: TSmallintField
+      FieldName = 'L_DESCR'
+    end
+    object TBCONFDARFC_01NOMESim: TSmallintField
+      FieldName = 'C_01NOMESim'
+    end
+    object TBCONFDARFL_01NomeSim: TSmallintField
+      FieldName = 'L_01NomeSim'
+    end
+    object TBCONFDARFL_01TELSim: TSmallintField
+      FieldName = 'L_01TELSim'
+    end
+    object TBCONFDARFC_02a10: TSmallintField
+      FieldName = 'C_02a10'
+    end
+    object TBCONFDARFL_02PERIODO: TSmallintField
+      FieldName = 'L_02PERIODO'
+    end
+    object TBCONFDARFL_03CGC: TSmallintField
+      FieldName = 'L_03CGC'
+    end
+    object TBCONFDARFL_04CRECEITA: TSmallintField
+      FieldName = 'L_04CRECEITA'
+    end
+    object TBCONFDARFL_05NRVRBA: TSmallintField
+      FieldName = 'L_05NRVRBA'
+    end
+    object TBCONFDARFL_06DTVENCPERC: TSmallintField
+      FieldName = 'L_06DTVENCPERC'
+    end
+    object TBCONFDARFL_07VPRINC: TSmallintField
+      FieldName = 'L_07VPRINC'
+    end
+    object TBCONFDARFL_08VMULTA: TSmallintField
+      FieldName = 'L_08VMULTA'
+    end
+    object TBCONFDARFL_09VJUROS: TSmallintField
+      FieldName = 'L_09VJUROS'
+    end
+    object TBCONFDARFL_10VTOTAL: TSmallintField
+      FieldName = 'L_10VTOTAL'
+    end
+    object TBCONFDARFxid: TAutoIncField
+      FieldName = 'xid'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+  end
+  object TBDARFA: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    BeforeDelete = TBDARFABeforeDelete
+    TableName = 'darfavul'
+    Left = 496
+    Top = 56
+    object TBDARFAXCGC: TStringField
+      FieldName = 'XCGC'
+      Size = 18
+    end
+    object TBDARFAXNOME: TStringField
+      FieldName = 'XNOME'
+      Size = 40
+    end
+    object TBDARFAXDESCR: TStringField
+      FieldName = 'XDESCR'
+    end
+    object TBDARFAXTEL: TStringField
+      FieldName = 'XTEL'
+      Size = 14
+    end
+    object TBDARFAXPERIODO: TDateField
+      FieldName = 'XPERIODO'
+      OnSetText = TBDARFAXPERIODOSetText
+      EditMask = '!99/99/9999;1;_'
+    end
+    object TBDARFAXCODIGO: TStringField
+      FieldName = 'XCODIGO'
+      Size = 6
+    end
+    object TBDARFAXREF: TStringField
+      FieldName = 'XREF'
+      Size = 10
+    end
+    object TBDARFAXVENC: TDateField
+      FieldName = 'XVENC'
+      OnSetText = TBDARFAXPERIODOSetText
+      EditMask = '!99/99/9999;1;_'
+    end
+    object TBDARFAXVRPRINC: TFloatField
+      FieldName = 'XVRPRINC'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object TBDARFAXVRMULTA: TFloatField
+      FieldName = 'XVRMULTA'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object TBDARFAXVRJUROS: TFloatField
+      FieldName = 'XVRJUROS'
+      DisplayFormat = '###,###,##0.00'
+    end
+  end
+  object TBConfDARJ: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'confdarj'
+    Left = 224
+    Top = 352
+    object TBConfDARJALTURA: TSmallintField
+      FieldName = 'ALTURA'
+    end
+    object TBConfDARJLARGURA: TSmallintField
+      FieldName = 'LARGURA'
+    end
+    object TBConfDARJL_01: TSmallintField
+      FieldName = 'L_01'
+    end
+    object TBConfDARJL_02: TSmallintField
+      FieldName = 'L_02'
+    end
+    object TBConfDARJL_03: TSmallintField
+      FieldName = 'L_03'
+    end
+    object TBConfDARJL_04: TSmallintField
+      FieldName = 'L_04'
+    end
+    object TBConfDARJL_05: TSmallintField
+      FieldName = 'L_05'
+    end
+    object TBConfDARJL_06: TSmallintField
+      FieldName = 'L_06'
+    end
+    object TBConfDARJL_07: TSmallintField
+      FieldName = 'L_07'
+    end
+    object TBConfDARJL_08: TSmallintField
+      FieldName = 'L_08'
+    end
+    object TBConfDARJL_09: TSmallintField
+      FieldName = 'L_09'
+    end
+    object TBConfDARJL_10: TSmallintField
+      FieldName = 'L_10'
+    end
+    object TBConfDARJC_01_10: TSmallintField
+      FieldName = 'C_01_10'
+    end
+    object TBConfDARJC_11: TSmallintField
+      FieldName = 'C_11'
+    end
+    object TBConfDARJC_12: TSmallintField
+      FieldName = 'C_12'
+    end
+    object TBConfDARJC_15: TSmallintField
+      FieldName = 'C_15'
+    end
+    object TBConfDARJC_16: TSmallintField
+      FieldName = 'C_16'
+    end
+    object TBConfDARJL_11: TSmallintField
+      FieldName = 'L_11'
+    end
+    object TBConfDARJxid: TAutoIncField
+      FieldName = 'xid'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+  end
+  object DSConfDARJ: TDataSource
+    DataSet = TBCONFDARF
+    Left = 312
+    Top = 352
+  end
+  object TBTabelaVP: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'tabelavp'
+    Left = 32
+    Top = 352
+    object TBTabelaVPxcv_inssspag: TStringField
+      FieldName = 'xcv_inssspag'
+      Size = 5
+    end
+    object TBTabelaVPxcv_insss13s: TStringField
+      FieldName = 'xcv_insss13s'
+      Size = 5
+    end
+    object TBTabelaVPxcv_insssfer: TStringField
+      FieldName = 'xcv_insssfer'
+      Size = 5
+    end
+    object TBTabelaVPxcv_irrfsadi: TStringField
+      FieldName = 'xcv_irrfsadi'
+      Size = 5
+    end
+    object TBTabelaVPxcv_irrfspag: TStringField
+      FieldName = 'xcv_irrfspag'
+      Size = 5
+    end
+    object TBTabelaVPxcv_irrfs13s: TStringField
+      FieldName = 'xcv_irrfs13s'
+      Size = 5
+    end
+    object TBTabelaVPxcv_irrfsfer: TStringField
+      FieldName = 'xcv_irrfsfer'
+      Size = 5
+    end
+    object TBTabelaVPxcv_irrfsdfe: TStringField
+      FieldName = 'xcv_irrfsdfe'
+      Size = 5
+    end
+    object TBTabelaVPxid: TAutoIncField
+      FieldName = 'xid'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+  end
+  object DSTabelaVP: TDataSource
+    DataSet = TBTabelaVP
+    Left = 120
+    Top = 352
+  end
+  object DSLancaixa: TDataSource
+    DataSet = TBLancaixa
+    Left = 504
+    Top = 304
+  end
+  object TBCONCX: TADOTable
+    Connection = ADOConEmpresa
+    CursorType = ctStatic
+    TableName = 'CONCX'
+    Left = 416
+    Top = 352
+    object TBCONCXcod_conta: TStringField
+      FieldName = 'cod_conta'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 10
+    end
+    object TBCONCXnome_conta: TStringField
+      FieldName = 'nome_conta'
+      Size = 30
+    end
+    object TBCONCXe_s: TStringField
+      FieldName = 'e_s'
+      Size = 1
+    end
+    object TBCONCXtipo: TStringField
+      FieldName = 'tipo'
+      Size = 1
+    end
+    object TBCONCXcod_historico: TStringField
+      FieldName = 'cod_historico'
+      Size = 4
+    end
+  end
+  object DSCONCX: TDataSource
+    DataSet = TBCONCX
+    Left = 504
+    Top = 352
+  end
+  object TBLancaixa: TADOTable
+    Connection = ADOConEmpresa
+    CursorType = ctStatic
+    TableName = 'caixa'
+    Left = 416
+    Top = 304
+    object TBLancaixasequencia: TAutoIncField
+      FieldName = 'sequencia'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object TBLancaixadia_mes_ano: TDateField
+      FieldName = 'dia_mes_ano'
+    end
+    object TBLancaixavalor: TBCDField
+      FieldName = 'valor'
+      Precision = 19
+    end
+    object TBLancaixacod_historico: TStringField
+      FieldName = 'cod_historico'
+      Size = 3
+    end
+    object TBLancaixae_s: TStringField
+      FieldName = 'e_s'
+      Size = 1
+    end
+    object TBLancaixacod_conta: TStringField
+      FieldName = 'cod_conta'
+      Size = 10
+    end
+    object TBLancaixahistorico: TStringField
+      FieldName = 'historico'
+      Size = 90
+    end
+    object TBLancaixati: TStringField
+      FieldName = 'ti'
+      Size = 1
+    end
+  end
+  object TBEmpresas: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'empresas'
+    Left = 32
+    Top = 176
+    object TBEmpresascod_empresa: TStringField
+      FieldName = 'cod_empresa'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 4
+    end
+    object TBEmpresasendereco: TStringField
+      FieldName = 'endereco'
+      Size = 40
+    end
+    object TBEmpresasnumero: TStringField
+      FieldName = 'numero'
+      Size = 6
+    end
+    object TBEmpresasbairro: TStringField
+      FieldName = 'bairro'
+    end
+    object TBEmpresascomplemento: TStringField
+      FieldName = 'complemento'
+    end
+    object TBEmpresascidade: TStringField
+      FieldName = 'cidade'
+      Size = 35
+    end
+    object TBEmpresasestado: TStringField
+      FieldName = 'estado'
+      Size = 2
+    end
+    object TBEmpresascep: TStringField
+      FieldName = 'cep'
+      Size = 9
+    end
+    object TBEmpresascgc: TStringField
+      FieldName = 'cgc'
+      Size = 18
+    end
+    object TBEmpresasceivinccgc: TStringField
+      FieldName = 'ceivinccgc'
+      Size = 12
+    end
+    object TBEmpresasinscr_estadual: TStringField
+      FieldName = 'inscr_estadual'
+      Size = 16
+    end
+    object TBEmpresasinscr_municipal: TStringField
+      FieldName = 'inscr_municipal'
+      Size = 16
+    end
+    object TBEmpresasprocesso: TStringField
+      FieldName = 'processo'
+      Size = 30
+    end
+    object TBEmpresasdecreto: TStringField
+      FieldName = 'decreto'
+      Size = 15
+    end
+    object TBEmpresasdocumento: TStringField
+      FieldName = 'documento'
+      Size = 15
+    end
+    object TBEmpresascontador: TStringField
+      FieldName = 'contador'
+      Size = 40
+    end
+    object TBEmpresascrc: TStringField
+      FieldName = 'crc'
+      Size = 15
+    end
+    object TBEmpresastelefone: TStringField
+      FieldName = 'telefone'
+      Size = 15
+    end
+    object TBEmpresastelddd: TStringField
+      FieldName = 'telddd'
+      Size = 2
+    end
+    object TBEmpresastelnum: TStringField
+      FieldName = 'telnum'
+      Size = 8
+    end
+    object TBEmpresasdata_arquivo: TDateField
+      FieldName = 'data_arquivo'
+    end
+    object TBEmpresasxfatservi: TStringField
+      FieldName = 'xfatservi'
+      Size = 1
+    end
+    object TBEmpresasenquadramento: TStringField
+      FieldName = 'enquadramento'
+      Size = 1
+    end
+    object TBEmpresascontabil: TStringField
+      FieldName = 'contabil'
+      Size = 1
+    end
+    object TBEmpresasfiscal: TStringField
+      FieldName = 'fiscal'
+      Size = 1
+    end
+    object TBEmpresaspessoal: TStringField
+      FieldName = 'pessoal'
+      Size = 1
+    end
+    object TBEmpresascaixa: TStringField
+      FieldName = 'caixa'
+      Size = 1
+    end
+    object TBEmpresasc_registro: TStringField
+      FieldName = 'c_registro'
+      Size = 1
+    end
+    object TBEmpresasc_diario: TSmallintField
+      FieldName = 'c_diario'
+    end
+    object TBEmpresasc_razao: TSmallintField
+      FieldName = 'c_razao'
+    end
+    object TBEmpresasc_caixa: TSmallintField
+      FieldName = 'c_caixa'
+    end
+    object TBEmpresasc_balancete: TSmallintField
+      FieldName = 'c_balancete'
+    end
+    object TBEmpresasc_numreg: TStringField
+      FieldName = 'c_numreg'
+      Size = 15
+    end
+    object TBEmpresasc_regjc: TStringField
+      FieldName = 'c_regjc'
+      Size = 1
+    end
+    object TBEmpresasc_datadosaldo: TDateField
+      FieldName = 'c_datadosaldo'
+    end
+    object TBEmpresasc_periodode: TDateField
+      FieldName = 'c_periodode'
+    end
+    object TBEmpresasc_periodoa: TDateField
+      FieldName = 'c_periodoa'
+    end
+    object TBEmpresasc_flag: TStringField
+      FieldName = 'c_flag'
+      Size = 1
+    end
+    object TBEmpresasc_matriz: TStringField
+      FieldName = 'c_matriz'
+      Size = 4
+    end
+    object TBEmpresasc_contapartida: TStringField
+      FieldName = 'c_contapartida'
+      Size = 10
+    end
+    object TBEmpresasc_contalucro: TStringField
+      FieldName = 'c_contalucro'
+      Size = 10
+    end
+    object TBEmpresasc_contaprejuizo: TStringField
+      FieldName = 'c_contaprejuizo'
+      Size = 10
+    end
+    object TBEmpresasf_tipo: TStringField
+      FieldName = 'f_tipo'
+      Size = 1
+    end
+    object TBEmpresasf_xlc: TStringField
+      FieldName = 'f_xlc'
+      Size = 1
+    end
+    object TBEmpresasf_xldipi: TStringField
+      FieldName = 'f_xldipi'
+      Size = 1
+    end
+    object TBEmpresasf_xcai: TStringField
+      FieldName = 'f_xcai'
+      Size = 3
+    end
+    object TBEmpresasf_xpisfat: TStringField
+      FieldName = 'f_xpisfat'
+      Size = 1
+    end
+    object TBEmpresasf_xcofins: TStringField
+      FieldName = 'f_xcofins'
+      Size = 1
+    end
+    object TBEmpresasf_xcsme: TStringField
+      FieldName = 'f_xcsme'
+      Size = 1
+    end
+    object TBEmpresasf_xcslp: TStringField
+      FieldName = 'f_xcslp'
+      Size = 1
+    end
+    object TBEmpresasf_xirpj: TStringField
+      FieldName = 'f_xirpj'
+      Size = 1
+    end
+    object TBEmpresasf_xsimples: TStringField
+      FieldName = 'f_xsimples'
+      Size = 1
+    end
+    object TBEmpresasf_xmodent: TStringField
+      FieldName = 'f_xmodent'
+      Size = 4
+    end
+    object TBEmpresasf_xmodsai: TStringField
+      FieldName = 'f_xmodsai'
+      Size = 4
+    end
+    object TBEmpresasf_xmodicm: TStringField
+      FieldName = 'f_xmodicm'
+      Size = 4
+    end
+    object TBEmpresasf_xmodipi: TStringField
+      FieldName = 'f_xmodipi'
+      Size = 4
+    end
+    object TBEmpresasf_xmodinv: TStringField
+      FieldName = 'f_xmodinv'
+      Size = 4
+    end
+    object TBEmpresasf_xmodservi: TStringField
+      FieldName = 'f_xmodservi'
+      Size = 4
+    end
+    object TBEmpresasf_xmodest: TStringField
+      FieldName = 'f_xmodest'
+      Size = 4
+    end
+    object TBEmpresasf_xcc: TStringField
+      FieldName = 'f_xcc'
+      Size = 1
+    end
+    object TBEmpresasf_xtabela: TStringField
+      FieldName = 'f_xtabela'
+      Size = 1
+    end
+    object TBEmpresasf_xredbc: TStringField
+      FieldName = 'f_xredbc'
+      Size = 1
+    end
+    object TBEmpresasf_xtipogia: TStringField
+      FieldName = 'f_xtipogia'
+      Size = 1
+    end
+    object TBEmpresasf_giasn: TStringField
+      FieldName = 'f_giasn'
+      Size = 1
+    end
+    object TBEmpresasf_xgiadisk: TStringField
+      FieldName = 'f_xgiadisk'
+      Size = 1
+    end
+    object TBEmpresasf_xmotsubs: TStringField
+      FieldName = 'f_xmotsubs'
+      Size = 44
+    end
+    object TBEmpresasf_xregime: TStringField
+      FieldName = 'f_xregime'
+      Size = 2
+    end
+    object TBEmpresasf_cae: TStringField
+      FieldName = 'f_cae'
+      Size = 8
+    end
+    object TBEmpresasf_cargo: TStringField
+      FieldName = 'f_cargo'
+    end
+    object TBEmpresasf_xfundese: TStringField
+      FieldName = 'f_xfundese'
+      Size = 1
+    end
+    object TBEmpresasf_xmicrog: TStringField
+      FieldName = 'f_xmicrog'
+      Size = 2
+    end
+    object TBEmpresasf_tipoempsp: TStringField
+      FieldName = 'f_tipoempsp'
+      Size = 1
+    end
+    object TBEmpresasd_fpas: TStringField
+      FieldName = 'd_fpas'
+      Size = 3
+    end
+    object TBEmpresasd_xpissn: TStringField
+      FieldName = 'd_xpissn'
+      Size = 1
+    end
+    object TBEmpresasd_xtipoemp: TStringField
+      FieldName = 'd_xtipoemp'
+      Size = 1
+    end
+    object TBEmpresasd_xcodter: TStringField
+      FieldName = 'd_xcodter'
+      Size = 4
+    end
+    object TBEmpresasd_xcodsat: TStringField
+      FieldName = 'd_xcodsat'
+      Size = 10
+    end
+    object TBEmpresasd_xcagedsn: TStringField
+      FieldName = 'd_xcagedsn'
+      Size = 1
+    end
+    object TBEmpresasd_x1declarac: TStringField
+      FieldName = 'd_x1declarac'
+      Size = 1
+    end
+    object TBEmpresasd_xencerram: TStringField
+      FieldName = 'd_xencerram'
+      Size = 1
+    end
+    object TBEmpresasd_xmudaend: TStringField
+      FieldName = 'd_xmudaend'
+      Size = 1
+    end
+    object TBEmpresasd_xfgtssn: TStringField
+      FieldName = 'd_xfgtssn'
+      Size = 1
+    end
+    object TBEmpresasd_xagencia: TStringField
+      FieldName = 'd_xagencia'
+    end
+    object TBEmpresasd_xbancofgts: TStringField
+      FieldName = 'd_xbancofgts'
+    end
+    object TBEmpresasd_xnatestab: TStringField
+      FieldName = 'd_xnatestab'
+      Size = 4
+    end
+    object TBEmpresasd_xcatemp: TStringField
+      FieldName = 'd_xcatemp'
+      Size = 1
+    end
+    object TBEmpresasd_xnagencia: TStringField
+      FieldName = 'd_xnagencia'
+      Size = 7
+    end
+    object TBEmpresasd_xcontafgts: TStringField
+      FieldName = 'd_xcontafgts'
+      Size = 14
+    end
+    object TBEmpresasd_xccr: TStringField
+      FieldName = 'd_xccr'
+      Size = 1
+    end
+    object TBEmpresasd_xraissn: TStringField
+      FieldName = 'd_xraissn'
+      Size = 1
+    end
+    object TBEmpresasd_xproprieta: TStringField
+      FieldName = 'd_xproprieta'
+      Size = 2
+    end
+    object TBEmpresasd_xicgccei: TStringField
+      FieldName = 'd_xicgccei'
+      Size = 1
+    end
+    object TBEmpresasd_xiende: TStringField
+      FieldName = 'd_xiende'
+      Size = 1
+    end
+    object TBEmpresasd_xprefixo: TStringField
+      FieldName = 'd_xprefixo'
+      Size = 2
+    end
+    object TBEmpresasd_xcausaalt: TStringField
+      FieldName = 'd_xcausaalt'
+      Size = 1
+    end
+    object TBEmpresasd_xcodmun: TStringField
+      FieldName = 'd_xcodmun'
+      Size = 7
+    end
+    object TBEmpresasd_xdatabase: TStringField
+      FieldName = 'd_xdatabase'
+      Size = 2
+    end
+    object TBEmpresasd_xinscrant: TStringField
+      FieldName = 'd_xinscrant'
+      Size = 14
+    end
+    object TBEmpresasd_xcod: TStringField
+      FieldName = 'd_xcod'
+      Size = 3
+    end
+    object TBEmpresasd_xcodtra: TStringField
+      FieldName = 'd_xcodtra'
+      Size = 3
+    end
+    object TBEmpresasd_xinicio: TDateField
+      FieldName = 'd_xinicio'
+    end
+    object TBEmpresasd_xatividade: TStringField
+      FieldName = 'd_xatividade'
+      Size = 70
+    end
+    object TBEmpresasd_xcodativ: TStringField
+      FieldName = 'd_xcodativ'
+      Size = 6
+    end
+    object TBEmpresasd_xtipoestab: TStringField
+      FieldName = 'd_xtipoestab'
+      Size = 1
+    end
+    object TBEmpresasd_xcodrec: TStringField
+      FieldName = 'd_xcodrec'
+      Size = 3
+    end
+    object TBEmpresasd_xiacnae: TStringField
+      FieldName = 'd_xiacnae'
+      Size = 1
+    end
+    object TBEmpresasd_xtomrais: TStringField
+      FieldName = 'd_xtomrais'
+      Size = 1
+    end
+    object TBEmpresasg_codsacado: TStringField
+      FieldName = 'g_codsacado'
+      Size = 12
+    end
+    object TBEmpresasxsitemp: TStringField
+      FieldName = 'xsitemp'
+      Size = 1
+    end
+    object TBEmpresasxdatasit: TDateField
+      FieldName = 'xdatasit'
+    end
+    object TBEmpresasxiss: TStringField
+      FieldName = 'xiss'
+      Size = 1
+    end
+    object TBEmpresasxexig: TStringField
+      FieldName = 'xexig'
+      Size = 1
+    end
+    object TBEmpresasg_xdiapagto: TStringField
+      FieldName = 'g_xdiapagto'
+      Size = 2
+    end
+    object TBEmpresasxgrupo: TStringField
+      FieldName = 'xgrupo'
+      Size = 2
+    end
+    object TBEmpresasf_codpis: TStringField
+      FieldName = 'f_codpis'
+      Size = 4
+    end
+    object TBEmpresasf_codcofins: TStringField
+      FieldName = 'f_codcofins'
+      Size = 4
+    end
+    object TBEmpresasf_codcs: TStringField
+      FieldName = 'f_codcs'
+      Size = 4
+    end
+    object TBEmpresasf_codirpj: TStringField
+      FieldName = 'f_codirpj'
+      Size = 4
+    end
+    object TBEmpresasd_pat: TStringField
+      FieldName = 'd_pat'
+      Size = 1
+    end
+    object TBEmpresasd_codgps: TStringField
+      FieldName = 'd_codgps'
+      Size = 4
+    end
+    object TBEmpresasd_xcnae: TStringField
+      FieldName = 'd_xcnae'
+      Size = 7
+    end
+    object TBEmpresascrcuf: TStringField
+      FieldName = 'crcuf'
+      Size = 2
+    end
+    object TBEmpresascpfcontador: TStringField
+      FieldName = 'cpfcontador'
+      Size = 11
+    end
+    object TBEmpresasf_xcoddae: TStringField
+      FieldName = 'f_xcoddae'
+      Size = 10
+    end
+    object TBEmpresasf_xcoddaefun: TStringField
+      FieldName = 'f_xcoddaefun'
+      Size = 10
+    end
+    object TBEmpresasf_xcompvragr: TStringField
+      FieldName = 'f_xcompvragr'
+      Size = 1
+    end
+    object TBEmpresasf_xdesm_cae: TStringField
+      FieldName = 'f_xdesm_cae'
+      Size = 2
+    end
+    object TBEmpresasf_xcod_mun_irpj: TStringField
+      FieldName = 'f_xcod_mun_irpj'
+      Size = 4
+    end
+    object TBEmpresasf_xrev_auton: TStringField
+      FieldName = 'f_xrev_auton'
+      Size = 1
+    end
+    object TBEmpresasx_tipo_integ: TStringField
+      FieldName = 'x_tipo_integ'
+      Size = 1
+    end
+    object TBEmpresasx_data_saldo_cx: TDateField
+      FieldName = 'x_data_saldo_cx'
+    end
+    object TBEmpresascx_periodode: TDateField
+      FieldName = 'cx_periodode'
+    end
+    object TBEmpresascx_periodoa: TDateField
+      FieldName = 'cx_periodoa'
+    end
+    object TBEmpresasd_simples: TStringField
+      FieldName = 'd_simples'
+      Size = 1
+    end
+    object TBEmpresasf_passo: TStringField
+      FieldName = 'f_passo'
+      Size = 1
+    end
+    object TBEmpresasd_iea: TStringField
+      FieldName = 'd_iea'
+      Size = 1
+    end
+    object TBEmpresasd_xregime_pag: TStringField
+      FieldName = 'd_xregime_pag'
+      Size = 1
+    end
+    object TBEmpresasf_ciap: TStringField
+      FieldName = 'f_ciap'
+      Size = 1
+    end
+    object TBEmpresasf_issqn: TStringField
+      FieldName = 'f_issqn'
+      Size = 1
+    end
+    object TBEmpresasxemail_resp: TStringField
+      FieldName = 'xemail_resp'
+      Size = 80
+    end
+    object TBEmpresasxbancocomp: TStringField
+      FieldName = 'xbancocomp'
+      Size = 3
+    end
+    object TBEmpresasxtipocc: TStringField
+      FieldName = 'xtipocc'
+      Size = 5
+    end
+    object TBEmpresasxbanco: TStringField
+      FieldName = 'xbanco'
+      Size = 30
+    end
+    object TBEmpresasxcodempbanco: TStringField
+      FieldName = 'xcodempbanco'
+    end
+    object TBEmpresasxcodagencia: TStringField
+      FieldName = 'xcodagencia'
+      Size = 5
+    end
+    object TBEmpresasxdvagencia: TStringField
+      FieldName = 'xdvagencia'
+      Size = 1
+    end
+    object TBEmpresasxconta: TStringField
+      FieldName = 'xconta'
+      Size = 12
+    end
+    object TBEmpresasxdvconta: TStringField
+      FieldName = 'xdvconta'
+      Size = 1
+    end
+    object TBEmpresasxdvagenciacc: TStringField
+      FieldName = 'xdvagenciacc'
+      Size = 1
+    end
+    object TBEmpresasxcafe: TStringField
+      FieldName = 'xcafe'
+      Size = 1
+    end
+    object TBEmpresasf_tipocontrib: TStringField
+      FieldName = 'f_tipocontrib'
+      Size = 1
+    end
+    object TBEmpresasxativoext: TStringField
+      FieldName = 'xativoext'
+      Size = 1
+    end
+    object TBEmpresasf_xdf_rcdpe: TDateField
+      FieldName = 'f_xdf_rcdpe'
+      OnSetText = TBEmpresasf_xdf_rcdpeSetText
+      EditMask = '99/99/9999'
+    end
+    object TBEmpresasc_xtitulo: TStringField
+      FieldName = 'c_xtitulo'
+      Size = 1
+    end
+    object TBEmpresasf_xmoddupli: TStringField
+      FieldName = 'f_xmoddupli'
+      Size = 4
+    end
+    object TBEmpresasd_xmens_ho01: TStringField
+      FieldName = 'd_xmens_ho01'
+      Size = 50
+    end
+    object TBEmpresasd_xmens_ho02: TStringField
+      FieldName = 'd_xmens_ho02'
+      Size = 50
+    end
+    object TBEmpresasd_xmens_qh01: TStringField
+      FieldName = 'd_xmens_qh01'
+      Size = 100
+    end
+    object TBEmpresasd_xmens_qh02: TStringField
+      FieldName = 'd_xmens_qh02'
+      Size = 100
+    end
+    object TBEmpresasd_xmens_qh03: TStringField
+      FieldName = 'd_xmens_qh03'
+      Size = 100
+    end
+    object TBEmpresasd_xmens_qh04: TStringField
+      FieldName = 'd_xmens_qh04'
+      Size = 100
+    end
+    object TBEmpresasf_xpda291: TBCDField
+      FieldName = 'f_xpda291'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xpsdme: TBCDField
+      FieldName = 'f_xpsdme'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xpre: TBCDField
+      FieldName = 'f_xpre'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xprest: TBCDField
+      FieldName = 'f_xprest'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xfatanoant: TBCDField
+      FieldName = 'f_xfatanoant'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xpersimple: TBCDField
+      FieldName = 'f_xpersimple'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnument: TBCDField
+      FieldName = 'f_xnument'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnumsai: TBCDField
+      FieldName = 'f_xnumsai'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnumicm: TBCDField
+      FieldName = 'f_xnumicm'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnumipi: TBCDField
+      FieldName = 'f_xnumipi'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnuminv: TBCDField
+      FieldName = 'f_xnuminv'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnumservi: TBCDField
+      FieldName = 'f_xnumservi'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnumest: TBCDField
+      FieldName = 'f_xnumest'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xvalorfix: TBCDField
+      FieldName = 'f_xvalorfix'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_percsp: TBCDField
+      FieldName = 'f_percsp'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xnsm: TBCDField
+      FieldName = 'd_xnsm'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xpercemp: TBCDField
+      FieldName = 'd_xpercemp'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xpercempra: TBCDField
+      FieldName = 'd_xpercempra'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xperc: TBCDField
+      FieldName = 'd_xperc'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xpersat: TBCDField
+      FieldName = 'd_xpersat'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xcapital: TBCDField
+      FieldName = 'd_xcapital'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasg_xvrmensa: TBCDField
+      FieldName = 'g_xvrmensa'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasxaliss: TBCDField
+      FieldName = 'xaliss'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_percfrete: TBCDField
+      FieldName = 'd_percfrete'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_xpercif: TBCDField
+      FieldName = 'd_xpercif'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xperc_a_a_s: TBCDField
+      FieldName = 'f_xperc_a_a_s'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasx_vr_saldo_cx: TBCDField
+      FieldName = 'x_vr_saldo_cx'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_pat_sp: TBCDField
+      FieldName = 'd_pat_sp'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_pat_ac: TBCDField
+      FieldName = 'd_pat_ac'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_pat_rc: TBCDField
+      FieldName = 'd_pat_rc'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_pat_rt: TBCDField
+      FieldName = 'd_pat_rt'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_pat_ca: TBCDField
+      FieldName = 'd_pat_ca'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasd_pat_alc: TBCDField
+      FieldName = 'd_pat_alc'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasf_xnumdupli: TBCDField
+      FieldName = 'f_xnumdupli'
+      DisplayFormat = '###,###,###,##0.00'
+      Precision = 19
+    end
+    object TBEmpresasc_flag_lanct: TStringField
+      FieldName = 'c_flag_lanct'
+      Size = 1
+    end
+    object TBEmpresasf_xdesm_xcnae: TStringField
+      FieldName = 'f_xdesm_xcnae'
+      Size = 2
+    end
+    object TBEmpresasxexc_simples: TStringField
+      FieldName = 'xexc_simples'
+      Size = 1
+    end
+    object TBEmpresasxdt_exc_simples: TDateField
+      FieldName = 'xdt_exc_simples'
+    end
+    object TBEmpresasxop_refis: TStringField
+      FieldName = 'xop_refis'
+      Size = 1
+    end
+    object TBEmpresasxop_paes: TStringField
+      FieldName = 'xop_paes'
+      Size = 1
+    end
+    object TBEmpresasxcontrib_ipi: TStringField
+      FieldName = 'xcontrib_ipi'
+      Size = 1
+    end
+    object TBEmpresasxcontrib_icms: TStringField
+      FieldName = 'xcontrib_icms'
+      Size = 1
+    end
+    object TBEmpresasxconv_estado: TStringField
+      FieldName = 'xconv_estado'
+      Size = 1
+    end
+    object TBEmpresasxmes_conv_estado: TStringField
+      FieldName = 'xmes_conv_estado'
+      Size = 2
+    end
+    object TBEmpresasxlimite_conv_estado: TStringField
+      FieldName = 'xlimite_conv_estado'
+      Size = 1
+    end
+    object TBEmpresasxcontrib_iss: TStringField
+      FieldName = 'xcontrib_iss'
+      Size = 1
+    end
+    object TBEmpresasxconv_munic: TStringField
+      FieldName = 'xconv_munic'
+      Size = 1
+    end
+    object TBEmpresasxmes_conv_munic: TStringField
+      FieldName = 'xmes_conv_munic'
+      Size = 2
+    end
+    object TBEmpresasxlimite_conv_munic: TStringField
+      FieldName = 'xlimite_conv_munic'
+      Size = 1
+    end
+    object TBEmpresasxexpcaixa: TBCDField
+      FieldName = 'xexpcaixa'
+      Precision = 19
+    end
+    object TBEmpresasxordem: TSmallintField
+      FieldName = 'xordem'
+    end
+    object TBEmpresasxmodalidade: TStringField
+      FieldName = 'xmodalidade'
+      Size = 1
+    end
+    object TBEmpresasxsindassoc: TStringField
+      FieldName = 'xsindassoc'
+      Size = 3
+    end
+    object TBEmpresasxvrassoc: TBCDField
+      FieldName = 'xvrassoc'
+      Precision = 19
+    end
+    object TBEmpresasxsindsind: TStringField
+      FieldName = 'xsindsind'
+      Size = 3
+    end
+    object TBEmpresasxvrsind: TBCDField
+      FieldName = 'xvrsind'
+      Precision = 19
+    end
+    object TBEmpresasxsindassis: TStringField
+      FieldName = 'xsindassis'
+      Size = 3
+    end
+    object TBEmpresasxvrassis: TBCDField
+      FieldName = 'xvrassis'
+      Precision = 19
+    end
+    object TBEmpresasxsindconf: TStringField
+      FieldName = 'xsindconf'
+      Size = 3
+    end
+    object TBEmpresasxvrconf: TBCDField
+      FieldName = 'xvrconf'
+      Precision = 19
+    end
+    object TBEmpresasxexerativ: TStringField
+      FieldName = 'xexerativ'
+      Size = 1
+    end
+    object TBEmpresasxsenhaweb: TStringField
+      FieldName = 'xsenhaweb'
+      Size = 13
+    end
+    object TBEmpresasxemail_web: TStringField
+      FieldName = 'xemail_web'
+      Size = 80
+    end
+    object TBEmpresasxexibirweb: TStringField
+      FieldName = 'xexibirweb'
+      Size = 1
+    end
+    object TBEmpresasxcriterio: TStringField
+      FieldName = 'xcriterio'
+      Size = 1
+    end
+    object TBEmpresasxtipologra: TStringField
+      FieldName = 'xtipologra'
+      Size = 2
+    end
+    object TBEmpresasxorgao: TStringField
+      FieldName = 'xorgao'
+      Size = 1
+    end
+    object TBEmpresasxsocioscp: TSmallintField
+      FieldName = 'xsocioscp'
+    end
+    object TBEmpresasxmetodo: TStringField
+      FieldName = 'xmetodo'
+      Size = 1
+    end
+    object TBEmpresasxpartper: TStringField
+      FieldName = 'xpartper'
+      Size = 1
+    end
+    object TBEmpresasxcomelet: TStringField
+      FieldName = 'xcomelet'
+      Size = 1
+    end
+    object TBEmpresasxroyalrec: TStringField
+      FieldName = 'xroyalrec'
+      Size = 1
+    end
+    object TBEmpresasxroyalpag: TStringField
+      FieldName = 'xroyalpag'
+      Size = 1
+    end
+    object TBEmpresasxrendrel: TStringField
+      FieldName = 'xrendrel'
+      Size = 1
+    end
+    object TBEmpresasxpagrem: TStringField
+      FieldName = 'xpagrem'
+      Size = 1
+    end
+    object TBEmpresasxmajoracao: TStringField
+      FieldName = 'xmajoracao'
+      Size = 1
+    end
+    object TBEmpresasd_xativprinc: TStringField
+      FieldName = 'd_xativprinc'
+      Size = 7
+    end
+    object TBEmpresasg_xcontainteg: TStringField
+      FieldName = 'g_xcontainteg'
+      Size = 10
+    end
+    object TBEmpresasxcompresumo: TStringField
+      FieldName = 'xcompresumo'
+      Size = 1
+    end
+    object TBEmpresasxinovtec: TStringField
+      FieldName = 'xinovtec'
+      Size = 1
+    end
+    object TBEmpresasxtrib1t: TStringField
+      FieldName = 'xtrib1t'
+      Size = 1
+    end
+    object TBEmpresasxtrib2t: TStringField
+      FieldName = 'xtrib2t'
+      Size = 1
+    end
+    object TBEmpresasxqualifpj: TStringField
+      FieldName = 'xqualifpj'
+      Size = 2
+    end
+    object TBEmpresasxbalanco: TStringField
+      FieldName = 'xbalanco'
+      Size = 1
+    end
+    object TBEmpresasxmes1: TStringField
+      FieldName = 'xmes1'
+      Size = 1
+    end
+    object TBEmpresasxmes2: TStringField
+      FieldName = 'xmes2'
+      Size = 1
+    end
+    object TBEmpresasxmes3: TStringField
+      FieldName = 'xmes3'
+      Size = 1
+    end
+    object TBEmpresasxmes4: TStringField
+      FieldName = 'xmes4'
+      Size = 1
+    end
+    object TBEmpresasxmes5: TStringField
+      FieldName = 'xmes5'
+      Size = 1
+    end
+    object TBEmpresasxmes6: TStringField
+      FieldName = 'xmes6'
+      Size = 1
+    end
+    object TBEmpresasxscp: TStringField
+      FieldName = 'xscp'
+      Size = 1
+    end
+    object TBEmpresasxincorp: TStringField
+      FieldName = 'xincorp'
+      Size = 1
+    end
+    object TBEmpresasxdctf: TStringField
+      FieldName = 'xdctf'
+      Size = 1
+    end
+    object TBEmpresasxvarpis: TStringField
+      FieldName = 'xvarpis'
+      Size = 2
+    end
+    object TBEmpresasxvarcofins: TStringField
+      FieldName = 'xvarcofins'
+      Size = 2
+    end
+    object TBEmpresasxvarcs: TStringField
+      FieldName = 'xvarcs'
+      Size = 2
+    end
+    object TBEmpresasxvarirpj: TStringField
+      FieldName = 'xvarirpj'
+      Size = 2
+    end
+    object TBEmpresasf_xipi: TStringField
+      FieldName = 'f_xipi'
+      Size = 1
+    end
+    object TBEmpresasf_codipi: TStringField
+      FieldName = 'f_codipi'
+      Size = 4
+    end
+    object TBEmpresasxvaripi: TStringField
+      FieldName = 'xvaripi'
+      Size = 2
+    end
+    object TBEmpresasxindcentr: TStringField
+      FieldName = 'xindcentr'
+      Size = 1
+    end
+    object TBEmpresasxintegclp: TStringField
+      FieldName = 'xintegclp'
+      Size = 1
+    end
+    object TBEmpresasxpjcomexp: TStringField
+      FieldName = 'xpjcomexp'
+      Size = 1
+    end
+    object TBEmpresasxpjefet: TStringField
+      FieldName = 'xpjefet'
+      Size = 1
+    end
+    object TBEmpresasxaliq_cofins: TBCDField
+      FieldName = 'xaliq_cofins'
+      Precision = 19
+    end
+    object TBEmpresasxaliq_cs: TBCDField
+      FieldName = 'xaliq_cs'
+      Precision = 19
+    end
+    object TBEmpresasxfat_serv_cs: TStringField
+      FieldName = 'xfat_serv_cs'
+      Size = 1
+    end
+    object TBEmpresasxsuframa: TStringField
+      FieldName = 'xsuframa'
+      Size = 9
+    end
+    object TBEmpresasxind_perfil: TStringField
+      FieldName = 'xind_perfil'
+      Size = 1
+    end
+    object TBEmpresasxind_ativ: TStringField
+      FieldName = 'xind_ativ'
+      Size = 1
+    end
+    object TBEmpresasxconv_icms_115: TStringField
+      FieldName = 'xconv_icms_115'
+      Size = 1
+    end
+    object TBEmpresasxapuripi: TStringField
+      FieldName = 'xapuripi'
+      Size = 1
+    end
+    object TBEmpresasxsped_fiscal: TStringField
+      FieldName = 'xsped_fiscal'
+      Size = 1
+    end
+    object TBEmpresasxcod_ent_ref_conta: TStringField
+      FieldName = 'xcod_ent_ref_conta'
+      Size = 2
+    end
+    object TBEmpresasxcod_ent_ref_cad: TStringField
+      FieldName = 'xcod_ent_ref_cad'
+      Size = 2
+    end
+    object TBEmpresasxpjcsll15: TStringField
+      FieldName = 'xpjcsll15'
+      Size = 1
+    end
+    object TBEmpresasxoprtt: TStringField
+      FieldName = 'xoprtt'
+      Size = 1
+    end
+    object TBEmpresasxconttec: TStringField
+      FieldName = 'xconttec'
+      Size = 1
+    end
+    object TBEmpresasxsped_contabil: TStringField
+      FieldName = 'xsped_contabil'
+      Size = 1
+    end
+    object TBEmpresasxesc_cent: TStringField
+      FieldName = 'xesc_cent'
+      Size = 1
+    end
+    object TBEmpresasxpconta11638: TStringField
+      FieldName = 'xpconta11638'
+      Size = 4
+    end
+    object TBEmpresasxlayout: TStringField
+      FieldName = 'xlayout'
+      Size = 2
+    end
+    object TBEmpresasxfap: TBCDField
+      FieldName = 'xfap'
+      Precision = 18
+      Size = 2
+    end
+    object TBEmpresasxseqiss: TIntegerField
+      FieldName = 'xseqiss'
+    end
+    object TBEmpresasxnome_fantasia: TStringField
+      FieldName = 'xnome_fantasia'
+      Size = 40
+    end
+    object TBEmpresasxcrit_rec_vmon: TStringField
+      FieldName = 'xcrit_rec_vmon'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_jan: TStringField
+      FieldName = 'xaus_deb_jan'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_fev: TStringField
+      FieldName = 'xaus_deb_fev'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_mar: TStringField
+      FieldName = 'xaus_deb_mar'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_abr: TStringField
+      FieldName = 'xaus_deb_abr'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_mai: TStringField
+      FieldName = 'xaus_deb_mai'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_jun: TStringField
+      FieldName = 'xaus_deb_jun'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_jul: TStringField
+      FieldName = 'xaus_deb_jul'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_ago: TStringField
+      FieldName = 'xaus_deb_ago'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_set: TStringField
+      FieldName = 'xaus_deb_set'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_out: TStringField
+      FieldName = 'xaus_deb_out'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_nov: TStringField
+      FieldName = 'xaus_deb_nov'
+      Size = 1
+    end
+    object TBEmpresasxaus_deb_dez: TStringField
+      FieldName = 'xaus_deb_dez'
+      Size = 1
+    end
+    object TBEmpresasxapu_pis_cof: TStringField
+      FieldName = 'xapu_pis_cof'
+      Size = 1
+    end
+    object TBEmpresasxpj_ativ_mes: TStringField
+      FieldName = 'xpj_ativ_mes'
+      Size = 1
+    end
+    object TBEmpresasxdeb_scp_inc: TStringField
+      FieldName = 'xdeb_scp_inc'
+      Size = 1
+    end
+    object TBEmpresasxind_apro_cred: TStringField
+      FieldName = 'xind_apro_cred'
+      Size = 1
+    end
+    object TBEmpresasxcd_int_empresa: TAutoIncField
+      FieldName = 'xcd_int_empresa'
+      ReadOnly = True
+    end
+    object TBEmpresasxdt_ato_simp_emp: TDateTimeField
+      FieldName = 'xdt_ato_simp_emp'
+    end
+    object TBEmpresasxcod_inc_trib: TStringField
+      FieldName = 'xcod_inc_trib'
+      Size = 1
+    end
+    object TBEmpresasxcod_tipo_cont: TStringField
+      FieldName = 'xcod_tipo_cont'
+      Size = 1
+    end
+    object TBEmpresasxrec_cred_ret: TStringField
+      FieldName = 'xrec_cred_ret'
+      Size = 1
+    end
+    object TBEmpresasxind_nat_pj: TStringField
+      FieldName = 'xind_nat_pj'
+      Size = 2
+    end
+    object TBEmpresasxobs_empresa: TMemoField
+      FieldName = 'xobs_empresa'
+      BlobType = ftMemo
+    end
+    object TBEmpresasf_xnumservi_tom: TIntegerField
+      FieldName = 'f_xnumservi_tom'
+    end
+    object TBEmpresasf_xmodservi_tom: TStringField
+      FieldName = 'f_xmodservi_tom'
+      Size = 4
+    end
+    object TBEmpresasxlucro_real_lei: TStringField
+      FieldName = 'xlucro_real_lei'
+      Size = 1
+    end
+    object TBEmpresasxlei4056: TStringField
+      FieldName = 'xlei4056'
+      Size = 1
+    end
+    object TBEmpresasxlei12546: TStringField
+      FieldName = 'xlei12546'
+      Size = 1
+    end
+    object TBEmpresasxperc_lei12546: TBCDField
+      FieldName = 'xperc_lei12546'
+      Precision = 18
+      Size = 2
+    end
+    object TBEmpresasxdarflei12546: TStringField
+      FieldName = 'xdarflei12546'
+      Size = 4
+    end
+    object TBEmpresasxapcredativo: TStringField
+      FieldName = 'xapcredativo'
+      Size = 1
+    end
+    object TBEmpresasxrazao_social_conta: TStringField
+      FieldName = 'xrazao_social_conta'
+      Size = 40
+    end
+    object TBEmpresasxcgc_conta: TStringField
+      FieldName = 'xcgc_conta'
+      Size = 18
+    end
+    object TBEmpresasxformesc: TStringField
+      FieldName = 'xformesc'
+      Size = 1
+    end
+    object TBEmpresasxinteg_aut: TStringField
+      FieldName = 'xinteg_aut'
+      Size = 1
+    end
+    object TBEmpresasxma_integ_aut: TStringField
+      FieldName = 'xma_integ_aut'
+      Size = 7
+    end
+    object TBEmpresasxinteg_matriz: TStringField
+      FieldName = 'xinteg_matriz'
+      Size = 1
+    end
+    object TBEmpresasxindcrit: TStringField
+      FieldName = 'xindcrit'
+      Size = 1
+    end
+    object TBEmpresasxregrapreco: TStringField
+      FieldName = 'xregrapreco'
+      Size = 1
+    end
+    object TBEmpresasxnacionalidade: TStringField
+      FieldName = 'xnacionalidade'
+      Size = 2
+    end
+    object TBEmpresasxestado_civil: TStringField
+      FieldName = 'xestado_civil'
+      Size = 1
+    end
+    object TBEmpresasxprofissao: TStringField
+      FieldName = 'xprofissao'
+      Size = 50
+    end
+    object TBEmpresasxrg: TStringField
+      FieldName = 'xrg'
+      Size = 13
+    end
+    object TBEmpresasxtrava_integracao: TStringField
+      FieldName = 'xtrava_integracao'
+      EditMask = '99/9999;1;_'
+      Size = 7
+    end
+    object TBEmpresasxdif_vc_bcserv: TStringField
+      FieldName = 'xdif_vc_bcserv'
+      Size = 1
+    end
+    object TBEmpresasxtrava_lancto: TStringField
+      FieldName = 'xtrava_lancto'
+      Size = 1
+    end
+    object TBEmpresasxrg_resp: TStringField
+      FieldName = 'xrg_resp'
+      Size = 13
+    end
+    object TBEmpresasnome_resp: TStringField
+      FieldName = 'nome_resp'
+      Size = 60
+    end
+    object TBEmpresasxnome_auditor: TStringField
+      FieldName = 'xnome_auditor'
+      Size = 100
+    end
+    object TBEmpresasxreg_auditor: TStringField
+      FieldName = 'xreg_auditor'
+      Size = 50
+    end
+    object TBEmpresasxenc_exercicio_social: TStringField
+      FieldName = 'xenc_exercicio_social'
+      Size = 1
+    end
+    object TBEmpresasxorgao_resp: TStringField
+      FieldName = 'xorgao_resp'
+      Size = 4
+    end
+    object TBEmpresasxuforgao_resp: TStringField
+      FieldName = 'xuforgao_resp'
+      Size = 2
+    end
+    object TBEmpresasf_xnumcod_merc: TIntegerField
+      FieldName = 'f_xnumcod_merc'
+    end
+    object TBEmpresasf_xmodcod_merc: TStringField
+      FieldName = 'f_xmodcod_merc'
+      Size = 4
+    end
+    object TBEmpresasxresci42: TStringField
+      FieldName = 'xresci42'
+      Size = 30
+    end
+    object TBEmpresasxresci43: TStringField
+      FieldName = 'xresci43'
+      Size = 30
+    end
+    object TBEmpresasxresci44: TStringField
+      FieldName = 'xresci44'
+      Size = 30
+    end
+    object TBEmpresasxresci45: TStringField
+      FieldName = 'xresci45'
+      Size = 30
+    end
+    object TBEmpresasxresci51: TStringField
+      FieldName = 'xresci51'
+      Size = 30
+    end
+    object TBEmpresasxresci52: TStringField
+      FieldName = 'xresci52'
+      Size = 30
+    end
+    object TBEmpresasxresci53: TStringField
+      FieldName = 'xresci53'
+      Size = 30
+    end
+    object TBEmpresasxresci661: TStringField
+      FieldName = 'xresci661'
+      Size = 30
+    end
+    object TBEmpresasxresci95: TStringField
+      FieldName = 'xresci95'
+      Size = 30
+    end
+    object TBEmpresasxresci951: TStringField
+      FieldName = 'xresci951'
+      Size = 30
+    end
+    object TBEmpresasxresci952: TStringField
+      FieldName = 'xresci952'
+      Size = 30
+    end
+    object TBEmpresasxresci953: TStringField
+      FieldName = 'xresci953'
+      Size = 30
+    end
+    object TBEmpresasxresci954: TStringField
+      FieldName = 'xresci954'
+      Size = 30
+    end
+    object TBEmpresasxresci955: TStringField
+      FieldName = 'xresci955'
+      Size = 30
+    end
+    object TBEmpresasxresci115: TStringField
+      FieldName = 'xresci115'
+      Size = 30
+    end
+    object TBEmpresasxresci1151: TStringField
+      FieldName = 'xresci1151'
+      Size = 30
+    end
+    object TBEmpresasxresci1152: TStringField
+      FieldName = 'xresci1152'
+      Size = 30
+    end
+    object TBEmpresasxresci1153: TStringField
+      FieldName = 'xresci1153'
+      Size = 30
+    end
+    object TBEmpresasxresci1154: TStringField
+      FieldName = 'xresci1154'
+      Size = 30
+    end
+    object TBEmpresasxresci1155: TStringField
+      FieldName = 'xresci1155'
+      Size = 30
+    end
+    object TBEmpresasxsitdeclaracao: TStringField
+      FieldName = 'xsitdeclaracao'
+      Size = 1
+    end
+    object TBEmpresasxlei12_973_2014: TStringField
+      FieldName = 'xlei12_973_2014'
+      Size = 1
+    end
+    object TBEmpresasxtrava_mes_dp: TStringField
+      FieldName = 'xtrava_mes_dp'
+      Size = 7
+    end
+    object TBEmpresasxporte_estab: TStringField
+      FieldName = 'xporte_estab'
+      Size = 1
+    end
+    object TBEmpresasxcontrole_ponto: TStringField
+      FieldName = 'xcontrole_ponto'
+      Size = 2
+    end
+    object TBEmpresasxorgao_domes: TStringField
+      FieldName = 'xorgao_domes'
+      Size = 4
+    end
+    object TBEmpresasxuforgao_domes: TStringField
+      FieldName = 'xuforgao_domes'
+      Size = 2
+    end
+    object TBEmpresasLogoMarca: TBlobField
+      FieldName = 'LogoMarca'
+    end
+    object TBEmpresasEncExercSocFiscal: TStringField
+      FieldName = 'EncExercSocFiscal'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasc_ultfolhadiario: TIntegerField
+      FieldName = 'c_ultfolhadiario'
+    end
+    object TBEmpresasc_ultfolharazao: TIntegerField
+      FieldName = 'c_ultfolharazao'
+    end
+    object TBEmpresasc_ultfolhacaixa: TIntegerField
+      FieldName = 'c_ultfolhacaixa'
+    end
+    object TBEmpresasc_ultfolhabalancete: TIntegerField
+      FieldName = 'c_ultfolhabalancete'
+    end
+    object TBEmpresasTipo_Escrit: TStringField
+      FieldName = 'Tipo_Escrit'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasAtiv_Rural: TStringField
+      FieldName = 'Ativ_Rural'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasForma_Trib: TStringField
+      FieldName = 'Forma_Trib'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasNota_Indice_Liquidez: TMemoField
+      FieldName = 'Nota_Indice_Liquidez'
+      BlobType = ftMemo
+    end
+    object TBEmpresasSenhaCertificado: TStringField
+      FieldName = 'SenhaCertificado'
+      Size = 30
+    end
+    object TBEmpresasTipoEmissaoCertificado: TStringField
+      FieldName = 'TipoEmissaoCertificado'
+      Size = 30
+    end
+    object TBEmpresascaminhoCertificado: TStringField
+      FieldName = 'caminhoCertificado'
+      Size = 200
+    end
+    object TBEmpresasxdif_aliq_apartir: TStringField
+      FieldName = 'xdif_aliq_apartir'
+      Size = 7
+    end
+    object TBEmpresasNumSerieCertificado: TStringField
+      FieldName = 'NumSerieCertificado'
+      Size = 200
+    end
+    object TBEmpresasdif_aliq_interestadual: TStringField
+      FieldName = 'dif_aliq_interestadual'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaspagto_plano_privado: TStringField
+      FieldName = 'pagto_plano_privado'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasadm_fundo_invest: TStringField
+      FieldName = 'adm_fundo_invest'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasinst_financ: TStringField
+      FieldName = 'inst_financ'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaspagto_res_dom_exter: TStringField
+      FieldName = 'pagto_res_dom_exter'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresassocio_ostensivo: TStringField
+      FieldName = 'socio_ostensivo'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaspagto_jogos_olimp: TStringField
+      FieldName = 'pagto_jogos_olimp'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasnotariais: TStringField
+      FieldName = 'notariais'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasf_codirrf: TStringField
+      FieldName = 'f_codirrf'
+      Size = 4
+    end
+    object TBEmpresasf_codcsrf: TStringField
+      FieldName = 'f_codcsrf'
+      Size = 4
+    end
+    object TBEmpresasxvarirrf: TStringField
+      FieldName = 'xvarirrf'
+      Size = 2
+    end
+    object TBEmpresasxvarcsrf: TStringField
+      FieldName = 'xvarcsrf'
+      Size = 2
+    end
+    object TBEmpresasf_xirrf: TStringField
+      FieldName = 'f_xirrf'
+      Size = 1
+    end
+    object TBEmpresasf_xcsrf: TStringField
+      FieldName = 'f_xcsrf'
+      Size = 1
+    end
+    object TBEmpresasnome_empresa: TStringField
+      FieldName = 'nome_empresa'
+      Size = 160
+    end
+    object TBEmpresasPJ_Habil: TStringField
+      FieldName = 'PJ_Habil'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasclausula_contra_safri: TMemoField
+      FieldName = 'clausula_contra_safri'
+      BlobType = ftMemo
+    end
+    object TBEmpresasclausula_contra_expParcial: TMemoField
+      FieldName = 'clausula_contra_expParcial'
+      BlobType = ftMemo
+    end
+    object TBEmpresasclausula_contra_exp: TMemoField
+      FieldName = 'clausula_contra_exp'
+      BlobType = ftMemo
+    end
+    object TBEmpresaseS_CodClassTrib: TStringField
+      FieldName = 'eS_CodClassTrib'
+      FixedChar = True
+      Size = 2
+    end
+    object TBEmpresaseS_IndCooperativa: TIntegerField
+      FieldName = 'eS_IndCooperativa'
+    end
+    object TBEmpresaseS_IndConstrutora: TIntegerField
+      FieldName = 'eS_IndConstrutora'
+    end
+    object TBEmpresaseS_IndDesoFolha: TIntegerField
+      FieldName = 'eS_IndDesoFolha'
+    end
+    object TBEmpresaseS_OpRegEletEmp: TIntegerField
+      FieldName = 'eS_OpRegEletEmp'
+    end
+    object TBEmpresaseS_EntSemFinsLuc: TStringField
+      FieldName = 'eS_EntSemFinsLuc'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaseS_EmpTrabTemp: TStringField
+      FieldName = 'eS_EmpTrabTemp'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaseS_RegEmpTempMinist: TStringField
+      FieldName = 'eS_RegEmpTempMinist'
+      Size = 30
+    end
+    object TBEmpresaseS_SiglaMinisterioCert: TStringField
+      FieldName = 'eS_SiglaMinisterioCert'
+      Size = 70
+    end
+    object TBEmpresaseS_NumCert: TStringField
+      FieldName = 'eS_NumCert'
+      Size = 40
+    end
+    object TBEmpresaseS_DtEmissaoCert: TDateTimeField
+      FieldName = 'eS_DtEmissaoCert'
+    end
+    object TBEmpresaseS_DtVencimentoCert: TDateTimeField
+      FieldName = 'eS_DtVencimentoCert'
+    end
+    object TBEmpresaseS_ProtPedRenov: TStringField
+      FieldName = 'eS_ProtPedRenov'
+      Size = 40
+    end
+    object TBEmpresaseS_DtProtRenov: TDateTimeField
+      FieldName = 'eS_DtProtRenov'
+    end
+    object TBEmpresaseS_DtPublDOU: TDateTimeField
+      FieldName = 'eS_DtPublDOU'
+    end
+    object TBEmpresaseS_NumPagDOU: TIntegerField
+      FieldName = 'eS_NumPagDOU'
+    end
+    object TBEmpresaseS_NumSIAFI: TStringField
+      FieldName = 'eS_NumSIAFI'
+      Size = 6
+    end
+    object TBEmpresaseS_OrgPublEFR: TStringField
+      FieldName = 'eS_OrgPublEFR'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaseS_CNPJEFR: TStringField
+      FieldName = 'eS_CNPJEFR'
+      Size = 14
+    end
+    object TBEmpresaseS_EnteFedeOrg: TStringField
+      FieldName = 'eS_EnteFedeOrg'
+      Size = 115
+    end
+    object TBEmpresaseS_UFFedeOrg: TStringField
+      FieldName = 'eS_UFFedeOrg'
+      FixedChar = True
+      Size = 2
+    end
+    object TBEmpresaseS_CodMun: TStringField
+      FieldName = 'eS_CodMun'
+      Size = 7
+    end
+    object TBEmpresaseS_RegPrevSocial: TStringField
+      FieldName = 'eS_RegPrevSocial'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaseS_Subteto: TIntegerField
+      FieldName = 'eS_Subteto'
+    end
+    object TBEmpresaseS_VrSubteto: TBCDField
+      FieldName = 'eS_VrSubteto'
+      Precision = 18
+      Size = 2
+    end
+    object TBEmpresaseS_IsencaoMulta: TIntegerField
+      FieldName = 'eS_IsencaoMulta'
+    end
+    object TBEmpresaseS_DtInicioObrig: TDateTimeField
+      FieldName = 'eS_DtInicioObrig'
+    end
+    object TBEmpresaseS_DtFimObrig: TDateTimeField
+      FieldName = 'eS_DtFimObrig'
+    end
+    object TBEmpresasTelefone_resp: TStringField
+      FieldName = 'Telefone_resp'
+      Size = 13
+    end
+    object TBEmpresasCelular_resp: TStringField
+      FieldName = 'Celular_resp'
+      Size = 14
+    end
+    object TBEmpresaseS_TipoEmissaoCertificado: TStringField
+      FieldName = 'eS_TipoEmissaoCertificado'
+      Size = 30
+    end
+    object TBEmpresasdirf_registrar_siafi: TStringField
+      FieldName = 'dirf_registrar_siafi'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasderex: TStringField
+      FieldName = 'derex'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasclausula_contra_inter: TMemoField
+      FieldName = 'clausula_contra_inter'
+      BlobType = ftMemo
+    end
+    object TBEmpresaseS_caminhoCertificadoProc: TStringField
+      FieldName = 'eS_caminhoCertificadoProc'
+      Size = 200
+    end
+    object TBEmpresaseS_SenhaCertificadoProc: TStringField
+      FieldName = 'eS_SenhaCertificadoProc'
+      Size = 30
+    end
+    object TBEmpresaseS_TipoEmissaoCertificadoProc: TStringField
+      FieldName = 'eS_TipoEmissaoCertificadoProc'
+      Size = 30
+    end
+    object TBEmpresaseS_NumSerieCertificadoProc: TStringField
+      FieldName = 'eS_NumSerieCertificadoProc'
+      Size = 200
+    end
+    object TBEmpresaseS_NumCnpjCpfProc: TStringField
+      FieldName = 'eS_NumCnpjCpfProc'
+      Size = 18
+    end
+    object TBEmpresasDescont_Falta_Dsr: TStringField
+      FieldName = 'Descont_Falta_Dsr'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasdapisef00_termo_aceite: TStringField
+      FieldName = 'dapisef00_termo_aceite'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasindSimples: TIntegerField
+      FieldName = 'indSimples'
+    end
+    object TBEmpresastipoSSL: TStringField
+      FieldName = 'tipoSSL'
+      Size = 30
+    end
+    object TBEmpresaseS_tipoSSL: TStringField
+      FieldName = 'eS_tipoSSL'
+      Size = 30
+    end
+    object TBEmpresasreinf_AmbOficial_DtIniTabelas: TStringField
+      FieldName = 'reinf_AmbOficial_DtIniTabelas'
+      Size = 7
+    end
+    object TBEmpresasreinf_AmbTestes_DtIniTabelas: TStringField
+      FieldName = 'reinf_AmbTestes_DtIniTabelas'
+      Size = 7
+    end
+    object TBEmpresaseS_AmbTestes_DtInicioTabelas: TStringField
+      FieldName = 'eS_AmbTestes_DtInicioTabelas'
+      Size = 10
+    end
+    object TBEmpresaseS_AmbTestes_DtInicioNaoPeriodicos: TStringField
+      FieldName = 'eS_AmbTestes_DtInicioNaoPeriodicos'
+      Size = 10
+    end
+    object TBEmpresaseS_AmbTestes_DtInicioPeriodicos: TStringField
+      FieldName = 'eS_AmbTestes_DtInicioPeriodicos'
+      Size = 10
+    end
+    object TBEmpresaseS_AmbOficial_DtInicioTabelas: TStringField
+      FieldName = 'eS_AmbOficial_DtInicioTabelas'
+      Size = 10
+    end
+    object TBEmpresaseS_AmbOficial_DtInicioNaoPeriodicos: TStringField
+      FieldName = 'eS_AmbOficial_DtInicioNaoPeriodicos'
+      Size = 10
+    end
+    object TBEmpresaseS_AmbOficial_DtInicioPeriodicos: TStringField
+      FieldName = 'eS_AmbOficial_DtInicioPeriodicos'
+      Size = 10
+    end
+    object TBEmpresascheck_AcrescerIcmsRetido_DARF: TStringField
+      FieldName = 'check_AcrescerIcmsRetido_DARF'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresascheck_DeduzirIcmsRetido_DARF: TStringField
+      FieldName = 'check_DeduzirIcmsRetido_DARF'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresascheck_DeduzirIcmsRetido_DARF_DP: TStringField
+      FieldName = 'check_DeduzirIcmsRetido_DARF_DP'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresaseS_IndProdRural: TIntegerField
+      FieldName = 'eS_IndProdRural'
+    end
+    object TBEmpresasQuadro_Informativo_Adiantamento_5: TStringField
+      FieldName = 'Quadro_Informativo_Adiantamento_5'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresascheck_DeduzirVrExportacoes_DARF_DP: TStringField
+      FieldName = 'check_DeduzirVrExportacoes_DARF_DP'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasexisteEmpCNPJCPF: TStringField
+      FieldName = 'existeEmpCNPJCPF'
+      Size = 1
+    end
+    object TBEmpresasAtivarDesativarGestorOnTime: TStringField
+      FieldName = 'AtivarDesativarGestorOnTime'
+      Size = 1
+    end
+    object TBEmpresastpInsc_eSocial: TStringField
+      FieldName = 'tpInsc_eSocial'
+      Size = 1
+    end
+    object TBEmpresasnrInsc_eSocial: TStringField
+      FieldName = 'nrInsc_eSocial'
+      Size = 14
+    end
+    object TBEmpresasIndiceCargoFuncao: TIntegerField
+      FieldName = 'IndiceCargoFuncao'
+    end
+    object TBEmpresasinssPropFerias: TStringField
+      FieldName = 'inssPropFerias'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasxExportaLcdpr: TBooleanField
+      FieldName = 'xExportaLcdpr'
+    end
+    object TBEmpresasindPorte: TStringField
+      FieldName = 'indPorte'
+      Size = 1
+    end
+    object TBEmpresasxnac_Resp: TStringField
+      FieldName = 'xnac_Resp'
+      Size = 2
+    end
+    object TBEmpresasQualifResp: TStringField
+      FieldName = 'QualifResp'
+      FixedChar = True
+      Size = 3
+    end
+    object TBEmpresasclausula_contra_inde: TMemoField
+      FieldName = 'clausula_contra_inde'
+      BlobType = ftMemo
+    end
+    object TBEmpresasApresentarAvisoFerias: TStringField
+      FieldName = 'ApresentarAvisoFerias'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasQuadro_Informativo_holerite_5: TStringField
+      FieldName = 'Quadro_Informativo_holerite_5'
+      FixedChar = True
+      Size = 1
+    end
+    object TBEmpresasSalvarHistConc: TBooleanField
+      FieldName = 'SalvarHistConc'
+    end
+    object TBEmpresasNaoCalcular_1_3_Ferias: TBooleanField
+      FieldName = 'NaoCalcular_1_3_Ferias'
+    end
+    object TBEmpresasclausula_contra_PagamComMulta: TMemoField
+      FieldName = 'clausula_contra_PagamComMulta'
+      BlobType = ftMemo
+    end
+    object TBEmpresasclausula_contra_PagamSemMulta: TMemoField
+      FieldName = 'clausula_contra_PagamSemMulta'
+      BlobType = ftMemo
+    end
+    object TBEmpresasclausula_suspensao_contrato: TMemoField
+      FieldName = 'clausula_suspensao_contrato'
+      BlobType = ftMemo
+    end
+    object TBEmpresasclausula_reducao_salarial: TMemoField
+      FieldName = 'clausula_reducao_salarial'
+      BlobType = ftMemo
+    end
+    object TBEmpresasEmpfatura: TBooleanField
+      FieldName = 'Empfatura'
+    end
+    object TBEmpresasEmailContador: TStringField
+      FieldName = 'EmailContador'
+      Size = 115
+    end
+    object TBEmpresasTelefoneContador: TStringField
+      FieldName = 'TelefoneContador'
+      Size = 15
+    end
+    object TBEmpresasdtTrans11096: TDateTimeField
+      FieldName = 'dtTrans11096'
+    end
+    object TBEmpresasf_beneficiariosServDmed: TStringField
+      FieldName = 'f_beneficiariosServDmed'
+      Size = 1
+    end
+    object TBEmpresascertificado_empresa_ou_procurador: TIntegerField
+      FieldName = 'certificado_empresa_ou_procurador'
+    end
+  end
+  object query: TADOQuery
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 568
+    Top = 8
+  end
+  object TBFEDERACA: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'federaca'
+    Left = 416
+    Top = 208
+    object TBFEDERACAsigla: TStringField
+      FieldName = 'sigla'
+      Size = 2
+    end
+    object TBFEDERACAunidade: TStringField
+      FieldName = 'unidade'
+    end
+    object TBFEDERACAcodigo: TStringField
+      FieldName = 'codigo'
+      Size = 2
+    end
+    object TBFEDERACAp_zfm_alc: TStringField
+      FieldName = 'p_zfm_alc'
+      Size = 1
+    end
+  end
+  object table_temp: TADOTable
+    CursorType = ctStatic
+    Left = 432
+    Top = 56
+  end
+  object qryExp: TADOQuery
+    Connection = ADOConExp
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 336
+    Top = 112
+  end
+  object qry_comandos: TADOQuery
+    Connection = ADOConEmpresa
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 568
+    Top = 56
+  end
+  object pvtb: TADOTable
+    Connection = ADOpvdb
+    CursorType = ctStatic
+    Left = 432
+    Top = 8
+  end
+  object TBTabProtocolos: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'tabprotoc_ei'
+    Left = 416
+    Top = 256
+    object TBTabProtocolosxcod_protoc_ei: TStringField
+      FieldName = 'xcod_protoc_ei'
+      Size = 3
+    end
+    object TBTabProtocolosxdescricao: TStringField
+      FieldName = 'xdescricao'
+      Size = 30
+    end
+    object TBTabProtocolosxlocal_pagto: TStringField
+      FieldName = 'xlocal_pagto'
+    end
+  end
+  object DSTabProtocolos: TDataSource
+    DataSet = TBTabProtocolos
+    Left = 504
+    Top = 256
+  end
+  object ADOOnLine: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Persist Security Info=False;User ID=ledware;' +
+      'Initial Catalog=Ledware;Data Source=200.150.149.84'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 336
+    Top = 24
+  end
+  object data_gerente: TDataSource
+    DataSet = query
+    Left = 24
+    Top = 424
+  end
+  object data_mntgerente: TDataSource
+    DataSet = qry_comandos
+    Left = 104
+    Top = 424
+  end
+  object data_novogerente: TDataSource
+    DataSet = query_gerente
+    Left = 200
+    Top = 424
+  end
+  object query_gerente: TADOQuery
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 288
+    Top = 424
+  end
+  object table_gerente: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'gestorontime'
+    Left = 360
+    Top = 424
+    object table_gerentexid: TAutoIncField
+      FieldName = 'xid'
+      Required = True
+    end
+    object table_gerentexstatus: TStringField
+      FieldName = 'xstatus'
+      Size = 25
+    end
+    object table_gerentexobrigacao: TStringField
+      FieldName = 'xobrigacao'
+      Size = 40
+    end
+    object table_gerentexcod_empresa: TStringField
+      FieldName = 'xcod_empresa'
+      Size = 4
+    end
+    object table_gerentexnome_empresa: TStringField
+      FieldName = 'xnome_empresa'
+      Size = 100
+    end
+    object table_gerentexcod_func: TStringField
+      FieldName = 'xcod_func'
+      Size = 5
+    end
+    object table_gerentexnome_func: TStringField
+      FieldName = 'xnome_func'
+      Size = 100
+    end
+    object table_gerentexnome_dep: TStringField
+      FieldName = 'xnome_dep'
+      Size = 100
+    end
+    object table_gerentexcampos: TStringField
+      FieldName = 'xcampos'
+      Size = 150
+    end
+    object table_gerentexdata_venc: TDateField
+      FieldName = 'xdata_venc'
+    end
+  end
+  object ADOConEmpresa: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Led#Wa4e$;Persist Security Info=Tru' +
+      'e;User ID=sa;Initial Catalog=led0131;Data Source=192.168.0.39\LE' +
+      'DWARE'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 40
+    Top = 24
+  end
+  object ADOConPrimario: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Led#Wa4e$;Persist Security Info=Tru' +
+      'e;User ID=sa;Initial Catalog=ledwin;Data Source=192.168.0.39\LED' +
+      'WARE;Use Procedure for Prepare=1;Auto Translate=True;Packet Size' +
+      '=4096;Workstation ID=192.168.0.39\LEDWARE;Use Encryption for Dat' +
+      'a=False;Tag with column collation when possible=False'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 41
+    Top = 87
+  end
+  object ADOConExp: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Led#Wa4e$;Persist Security Info=Tru' +
+      'e;User ID=sa;Initial Catalog=SPED;Data Source=NOTEGT\LEDWARE;Use' +
+      ' Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Wo' +
+      'rkstation ID=192.168.0.34;Use Encryption for Data=False;Tag with' +
+      ' column collation when possible=False'
+    DefaultDatabase = 'SPED'
+    KeepConnection = False
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 144
+    Top = 24
+  end
+  object ADOpvdb: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Led#Wa4e$;Persist Security Info=Tru' +
+      'e;User ID=sa;Initial Catalog=led1054;Data Source=notegt\LEDWARE'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 144
+    Top = 88
+  end
+  object DSSIGNATARIO: TDataSource
+    DataSet = TBSIGNATARIO
+    Left = 510
+    Top = 433
+  end
+  object TBSIGNATARIO: TADOTable
+    Connection = ADOConPrimario
+    TableName = 'signatario'
+    Left = 440
+    Top = 432
+    object TBSIGNATARIOxcpf: TStringField
+      FieldName = 'xcpf'
+      Size = 14
+    end
+    object TBSIGNATARIOxnome: TStringField
+      FieldName = 'xnome'
+      Size = 70
+    end
+    object TBSIGNATARIOxqualif: TStringField
+      FieldName = 'xqualif'
+      Size = 3
+    end
+  end
+  object ADOConLog: TADOConnection
+    ConnectionString = 
+      'Provider=SQLNCLI.1;Password=Led#Wa4e$;Persist Security Info=True' +
+      ';User ID=sa;Initial Catalog=LEDWIN;Data Source=DESKTOP-SA06BQ9\L' +
+      'EDWARE'
+    KeepConnection = False
+    LoginPrompt = False
+    Provider = 'SQLNCLI.1'
+    Left = 232
+    Top = 24
+  end
+  object qryIntegracaoAutomatica: TADOQuery
+    Connection = ADOConEmpresa
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 568
+    Top = 112
+  end
+  object ADOConMunicipios: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Led#Wa4e$;Persist Security Info=Tru' +
+      'e;User ID=sa;Initial Catalog=SPED;Data Source=notegt\ledware;Use' +
+      ' Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Wo' +
+      'rkstation ID=CPD07;Use Encryption for Data=False;Tag with column' +
+      ' collation when possible=False'
+    DefaultDatabase = 'SPED'
+    KeepConnection = False
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 240
+    Top = 96
+  end
+  object tbInfo: TADOTable
+    Connection = ADOConPrimario
+    CursorType = ctStatic
+    TableName = 'tbl_Exclusao_eSocial'
+    Left = 577
+    Top = 210
+    object tbInfoid_Export_Prot_Evento: TIntegerField
+      FieldName = 'id_Export_Prot_Evento'
+    end
+    object tbInfoEvento: TStringField
+      FieldName = 'Evento'
+      Size = 10
+    end
+    object tbInfoNumero_Recibo: TStringField
+      FieldName = 'Numero_Recibo'
+      Size = 40
+    end
+    object tbInfoIdentificacao: TStringField
+      FieldName = 'Identificacao'
+      Size = 50
+    end
+    object tbInfoperApuracao: TStringField
+      FieldName = 'perApuracao'
+      Size = 7
+    end
+    object tbInfoNome: TStringField
+      FieldName = 'Nome'
+      Size = 70
+    end
+    object tbInfoTipo: TStringField
+      FieldName = 'Tipo'
+      Size = 1
+    end
+    object tbInfoxCheck: TBooleanField
+      FieldName = 'xCheck'
+    end
+    object tbInfoNIS: TStringField
+      FieldName = 'NIS'
+    end
+    object tbInfoCateSocial: TIntegerField
+      FieldName = 'CateSocial'
+    end
+    object tbInfoChaveFuncSocAuto: TStringField
+      DisplayWidth = 15
+      FieldName = 'ChaveFuncSocAuto'
+      Size = 15
+    end
+    object tbInfoeSocial_Novo: TBooleanField
+      FieldName = 'eSocial_Novo'
+    end
+    object tbInfoperApuracaoComp: TStringField
+      FieldName = 'perApuracaoComp'
+      Size = 10
+    end
+  end
+  object ACBrCEP: TACBrCEP
+    ProxyPort = '8080'
+    ParseText = True
+    WebService = wsRepublicaVirtual
+    PesquisarIBGE = True
+    OnBuscaEfetuada = ACBrCEPBuscaEfetuada
+    Left = 616
+    Top = 328
+  end
+end

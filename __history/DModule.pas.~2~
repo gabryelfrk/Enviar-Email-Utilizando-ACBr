@@ -1,0 +1,115 @@
+unit DModule;
+
+interface
+                 
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  DB, DBTables, DBCtrls, Buttons, ExtCtrls, ADODB, JvExDBGrids, JvDBGrid, JvDBUltimGrid,
+  ACBrBase, ACBrSocket, ACBrCEP;
+
+type
+  TDM = class(TDataModule)
+    ADOConPrimario: TADOConnection;
+    procedure TBEmpresasCOD_EMPRESASetText(Sender: TField;
+      const Text: string);
+    procedure TBHistoricoBeforeDelete(DataSet: TDataSet);
+    procedure TBHistoricoCOD_HISTORICOSetText(Sender: TField;
+      const Text: string);
+    procedure TBContasCod_ContaSetText(Sender: TField; const Text: string);
+    procedure TBContasBeforeDelete(DataSet: TDataSet);
+    procedure TBDARFAXPERIODOSetText(Sender: TField; const Text: string);
+    procedure TBDARFABeforeDelete(DataSet: TDataSet);
+    procedure TBEmpresasf_xdf_rcdpeSetText(Sender: TField; const Text: string);
+    procedure ACBrCEPBuscaEfetuada(Sender: TObject);
+  end;
+
+var
+  DM: TDM;
+  vBusca_cep, vBusca_endereco, vBusca_bairro, vBusca_cidade, vBusca_uf : String;
+
+
+implementation
+
+uses Principal, PwordDlg, BibliotecaPrincipal;
+
+{$R *.DFM}
+
+procedure TDM.TBEmpresasCOD_EMPRESASetText(Sender: TField;
+  const Text: string);
+begin
+     if Valida_CampoL(TBEmpresas,'cod_empresa',Text,'COD_EMPRESA','Codigo já cadastrado.') then
+       TBEmpresas.FieldByName('COD_EMPRESA').AsString:=Text;
+end;
+
+procedure TDM.TBEmpresasf_xdf_rcdpeSetText(Sender: TField; const Text: string);
+begin
+   if (Text <> '') and (Text <> '  /  /    ') then
+      If VerificaData(Text) then
+         (Sender as TField).AsString := data2000
+      else
+         (Sender as TField).AsString := ''
+   else
+      (Sender as TField).AsString := '';
+end;
+
+procedure TDM.TBHistoricoBeforeDelete(DataSet: TDataSet);
+begin
+  if MessageDlg('Deseja Eliminar Este Registro',mtConfirmation,
+    [mbYes,mbNo],0)=mrNo then begin
+    Abort;
+  end;
+end;
+
+procedure TDM.TBHistoricoCOD_HISTORICOSetText(Sender: TField;
+  const Text: string);
+begin
+  if Valida_CampoL(TBHistorico,'COD_HISTORICO',Text,'COD_HISTORICO','Codigo já Cadastrado') then
+    TBHistorico.FieldByName('COD_HISTORICO').AsString:=Text;
+
+end;
+
+procedure TDM.TBContasCod_ContaSetText(Sender: TField; const Text: string);
+begin
+  if Valida_CampoL(TBCONCX,'COD_CONTA',Text,'COD_CONTA','Codigo já Cadastrado') then
+    TBCONCX.FieldByName('COD_CONTA').AsString:=Text;
+end;
+
+procedure TDM.ACBrCEPBuscaEfetuada(Sender: TObject);
+var
+   i : Integer;
+begin
+   try
+      if Trim(vBusca_cep) <> '' then
+         for I := 0 to ACBrCEP.Enderecos.Count - 1 do
+         begin
+            vBusca_endereco  := Trim(AnsiUpperCase(ACBrCEP.Enderecos[i].Tipo_Logradouro)) +' '+ Trim(AnsiUpperCase(ACBrCEP.Enderecos[i].Logradouro));
+            vBusca_bairro    := Trim(AnsiUpperCase(ACBrCEP.Enderecos[i].Bairro));
+            vBusca_cidade    := Trim(AnsiUpperCase(ACBrCEP.Enderecos[i].Municipio));
+            vBusca_uf        := Trim(AnsiUpperCase(ACBrCEP.Enderecos[i].UF));
+         end;
+   except
+   end;
+end;
+
+procedure TDM.TBContasBeforeDelete(DataSet: TDataSet);
+begin
+     if MessageDlg('Deseja Eliminar este Registro?',mtConfirmation,[mbYes,mbNo],0) = mrNo then
+        Abort;
+
+end;
+
+procedure TDM.TBDARFAXPERIODOSetText(Sender: TField; const Text: string);
+begin
+     If NOT VerificaData(Text) then
+          Sender.AsString := ''
+        else
+          Sender.AsString := data2000;
+end;
+
+procedure TDM.TBDARFABeforeDelete(DataSet: TDataSet);
+begin
+     If Application.MessageBox('Excluir Darf?','Confirmação',mb_IConQuestion+mb_YESNO)=idNO then
+        abort;
+end;
+
+end.

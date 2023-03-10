@@ -1,0 +1,17 @@
+program PrjEnviaEmail;
+
+uses
+  Vcl.Forms,
+  UConfigEnvioEmail in 'UConfigEnvioEmail.pas' {FrmConfigEnvioEmail},
+  ClasseEmailACBR in 'Classe\ClasseEmailACBR.pas',
+  UConexao in 'UConexao.pas' {FrmConexao};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmConfigEnvioEmail, FrmConfigEnvioEmail);
+  Application.CreateForm(TFrmConexao, FrmConexao);
+  Application.Run;
+end.

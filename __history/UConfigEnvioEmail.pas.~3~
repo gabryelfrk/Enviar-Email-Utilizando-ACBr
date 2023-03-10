@@ -1,0 +1,50 @@
+unit UConfigEnvioEmail;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFrmConfigEnvioEmail = class(TForm)
+    lblDoEmail: TLabel;
+    lblSMTP: TLabel;
+    lblUsuario: TLabel;
+    lblPorta: TLabel;
+    Label1: TLabel;
+    lblSenha: TLabel;
+    btnSalvar: TSpeedButton;
+    btnAlterar: TSpeedButton;
+    lblNota: TLabel;
+    edtDoEmail: TEdit;
+    edtSMTP: TEdit;
+    edtUsuario: TEdit;
+    edtPorta: TEdit;
+    chkTLS: TCheckBox;
+    chkSSL: TCheckBox;
+    chkMostrarSenha: TCheckBox;
+    edtSenha: TEdit;
+    gbEmailTeste: TGroupBox;
+    btnEnvioTeste: TSpeedButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    lblAssuntoTeste: TLabel;
+    edtParaEmailTeste: TEdit;
+    edtParaNomeTeste: TEdit;
+    edtAssuntoTeste: TEdit;
+    edtDoNome: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmConfigEnvioEmail: TFrmConfigEnvioEmail;
+
+implementation
+
+{$R *.dfm}
+
+end.

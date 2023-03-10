@@ -1,0 +1,6 @@
+host smtp: smtp.ledware.com.br
+porta: 587
+TLS: true
+SSL: false
+email: gabryel.silva@ledware.com.br
+senha: ******

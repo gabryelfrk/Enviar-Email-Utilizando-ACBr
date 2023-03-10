@@ -1,0 +1,289 @@
+unit ClasseEmailACBr;
+
+interface
+
+uses
+    SysUtils, Data.Win.ADODB, Vcl.StdCtrls, ACBrMail, Dialogs, Forms, Controls;
+
+type
+   TEmailACBr = class
+      private
+         FDoEmail : string;
+         FDoNome  : string;
+         FHost    : string;
+         FPorta   : integer;
+         FUsuario : string;
+         FSenha   : string;
+         FTLS     : string;
+         FSSL     : string;
+         FConexao: TADOConnection;
+         FACBrMail: TACBrMail;
+      public
+         property DoEmail : string  read FDoEmail write FDoEmail;
+         property DoNome  : string  read FDoNome  write FDoNome;
+         property Host    : string  read FHost    write FHost;
+         property Porta   : integer read FPorta   write FPorta;
+         property Usuario : string  read FUsuario write FUsuario;
+         property Senha   : string  read FSenha   write FSenha;
+         property TLS     : string  read FTLS     write FTLS;
+         property SSL     : string  read FSSL     write FSSL;
+         property Conexao: TADOConnection read FConexao write FConexao;
+         property ACBrMail: TACBrMail read FACBrMail write FACBrMail;
+
+         Constructor Create;
+         Destructor Destroy; Override;
+
+         procedure Inserir;
+         procedure Alterar;
+         // procedures do componente
+         procedure ACBrMailAfterMailProcess(Sender: TObject);
+         procedure ACBrMailMailException(const AMail: TACBrMail; const E: Exception; var ThrowIt: Boolean);
+         //
+         procedure EnviarEmailTeste(DoEmail,DoNome,Host,Usuario,Senha,Assunto,Email,Nome: string; Porta: integer; TLS,SSL: boolean);
+         procedure EnviarEmail(DoNome,ParaEmail,ParaNome,Assunto,CorpoEmail,Holerite: string);
+
+         function RetornaCampos: boolean;
+         function VerificaConfigEmail: boolean;
+   end;
+
+implementation
+
+uses UConexao;
+
+var
+   qryControlaCampos: TADOQuery;
+
+{ TEmailACBr }
+
+constructor TEmailACBr.Create;
+begin
+   if qryControlaCampos = nil then
+      qryControlaCampos := TADOQuery.Create(nil);
+
+   if ACBrMail = nil then
+      ACBrMail := TACBrMail.Create(nil);
+end;
+
+destructor TEmailACBr.Destroy;
+begin
+   if qryControlaCampos <> nil then
+      FreeAndNil(qryControlaCampos);
+
+   if ACBrMail <> nil then
+      ACBrMail.Free;
+
+   inherited;
+end;
+
+procedure TEmailACBr.ACBrMailAfterMailProcess(Sender: TObject);
+begin
+   ShowMessage('Enviado com Sucesso!');
+   Screen.Cursor := crDefault;
+end;
+
+procedure TEmailACBr.ACBrMailMailException(const AMail: TACBrMail;
+  const E: Exception; var ThrowIt: Boolean);
+begin
+   ShowMessage('Erro ao Enviar!');
+   Screen.Cursor := crDefault;
+end;
+
+procedure TEmailACBr.EnviarEmailTeste(DoEmail,DoNome,Host,Usuario,Senha,Assunto,Email,Nome: string; Porta: integer; TLS,SSL: boolean);
+begin
+   ACBrMail.OnAfterMailProcess := ACBrMailAfterMailProcess;
+   ACBrMail.OnMailException    := ACBrMailMailException;
+
+   try
+      ACBrMail.From     := DoEmail;
+      ACBrMail.FromName := DoNome; // opcional
+      ACBrMail.Host     := Host;
+      ACBrMail.Username := Usuario;
+      ACBrMail.Password := Senha;
+      ACBrMail.Port     := IntToStr(Porta);
+      ACBrMail.SetTLS   := TLS;
+      ACBrMail.SetSSL   := SSL;
+      ACBrMail.AddAddress(Email,Nome);
+      ACBrMail.Subject := Assunto;
+      ACBrMail.AltBody.Text := 'E-mail de teste. Não Responda!';
+      ACBrMail.Send(true);
+   finally
+   end;
+end;
+
+procedure TEmailACBr.EnviarEmail(DoNome, ParaEmail, ParaNome, Assunto, CorpoEmail, Holerite: string);
+var
+   qry: TADOQuery;
+   vDoNome, vAssinatura: string;
+   vTLS, vSSL: boolean;
+begin
+   try
+      qry := TADOQuery.Create(nil);
+
+      with qry do
+      begin
+         Connection := FrmConexao.ADOConPrimario;
+
+         Close;
+         SQL.Clear;
+         SQL.Add('SELECT * FROM tb_configEmail');
+         Open;
+
+         if not IsEmpty then
+         begin
+            if FieldByName('CheckTLS').AsString = '1' then
+               vTLS := true
+            else
+               vTLS := false;
+
+            if FieldByName('CheckSSL').AsString = '1' then
+               vSSL := true
+            else
+               vSSL := false;
+
+            ACBrMail.Clear;
+            ACBrMail.From     := FieldByName('DoEmail').AsString;
+            ACBrMail.FromName := DoNome;
+            ACBrMail.Host     := FieldByName('Host').AsString;
+            ACBrMail.Username := FieldByName('Usuario').AsString;
+            ACBrMail.Password := FieldByName('Senha').AsString;
+            ACBrMail.Port     := FieldByName('Porta').AsString;
+            ACBrMail.SetTLS   := vTLS;
+            ACBrMail.SetSSL   := vSSL;
+            ACBrMail.AddAddress(Trim(ParaEmail),Trim(ParaNome));
+            ACBrMail.Subject := Assunto;
+            ACBrMail.AltBody.Text := CorpoEmail;
+            //ACBrMail.AddAttachment(Holerite,''); -- aqui é para enviar o PDF
+            ACBrMail.Send(true);
+		     end;
+      end;
+   finally
+      FreeAndNil(qry);
+   end;
+end;
+
+procedure TEmailACBr.Alterar;
+var
+   qryConfiguracao: TADOQuery;
+begin
+   qryConfiguracao := TADOQuery.Create(nil);
+
+   try
+      with qryConfiguracao do
+      begin
+         Connection := Conexao;
+
+         Close;
+         SQL.Clear;
+         SQL.Add('UPDATE tb_configEmail SET ');
+         SQL.Add('DoEmail  = :DoEmail,  ');
+         SQL.Add('DoNome   = :DoNome,   ');
+         SQL.Add('Host     = :Host,     ');
+         SQL.Add('Porta    = :Porta,    ');
+         SQL.Add('Usuario  = :Usuario,  ');
+         SQL.Add('Senha    = :Senha,    ');
+         SQL.Add('CheckTLS = :CheckTLS, ');
+         SQL.Add('CheckSSL = :CheckSSL  ');
+         Parameters.ParamByName('DoEmail').Value  := DoEmail;
+         Parameters.ParamByName('DoNome').Value   := DoNome;
+         Parameters.ParamByName('Host').Value     := Host;
+         Parameters.ParamByName('Porta').Value    := Porta;
+         Parameters.ParamByName('Usuario').Value  := Usuario;
+         Parameters.ParamByName('Senha').Value    := Senha;
+         Parameters.ParamByName('CheckTLS').Value := TLS;
+         Parameters.ParamByName('CheckSSL').Value := SSL;
+         ExecSQL;
+      end;
+   finally
+      FreeAndNil(qryConfiguracao);
+   end;
+end;
+
+procedure TEmailACBr.Inserir;
+var
+   qryConfiguracao: TADOQuery;
+begin
+   qryConfiguracao := TADOQuery.Create(nil);
+
+   try
+      with qryConfiguracao do
+      begin
+         Connection := Conexao;
+
+         Close;
+         SQL.Clear;
+         SQL.Add('INSERT INTO tb_configEmail (DoEmail,DoNome,Host,Porta,Usuario,Senha,CheckTLS,CheckSSL) ');
+         SQL.Add('VALUES (:DoEmail,:DoNome,:Host,:Porta,:Usuario,:Senha,:CheckTLS,:CheckSSL) ');
+         Parameters.ParamByName('DoEmail').Value  := DoEmail;
+         Parameters.ParamByName('DoNome').Value   := DoNome;
+         Parameters.ParamByName('Host').Value     := Host;
+         Parameters.ParamByName('Porta').Value    := Porta;
+         Parameters.ParamByName('Usuario').Value  := Usuario;
+         Parameters.ParamByName('Senha').Value    := Senha;
+         Parameters.ParamByName('CheckTLS').Value := TLS;
+         Parameters.ParamByName('CheckSSL').Value := SSL;
+         ExecSQL;
+      end;
+   finally
+      FreeAndNil(qryConfiguracao);
+   end;
+end;
+
+function TEmailACBr.RetornaCampos: boolean;
+begin
+   Result := false;
+
+   with qryControlaCampos do
+   begin
+      Connection := Conexao;
+
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT * FROM tb_configEmail');
+      Open;
+
+      if not IsEmpty then
+      begin
+         DoEmail  := FieldByName('DoEmail').AsString;
+         DoNome   := FieldByName('DoNome').AsString;
+         Host     := FieldByName('Host').AsString;
+         Porta    := FieldByName('Porta').AsInteger;
+         TLS      := FieldByName('CheckTLS').AsString;
+         SSL      := FieldByName('CheckSSL').AsString;
+         Usuario  := FieldByName('Usuario').AsString;
+         Senha    := FieldByName('Senha').AsString;
+
+         Result := true;
+      end;
+   end;
+end;
+
+function TEmailACBr.VerificaConfigEmail: boolean;
+var
+   qryVerifica: TADOQuery;
+begin
+   Result := false;
+
+   qryVerifica := TADOQuery.Create(nil);
+
+   with qryVerifica do
+   begin
+      try
+         with qryVerifica do
+         begin
+            Connection := Conexao;
+
+            Close;
+            SQL.Clear;
+            SQL.Add('SELECT * FROM tb_configEmail');
+            Open;
+
+            if not IsEmpty then
+               Result := true;
+         end;
+      finally
+         FreeAndNil(qryVerifica);
+      end;
+   end;
+end;
+
+end.

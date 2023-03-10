@@ -1,0 +1,37 @@
+object FrmEnviar: TFrmEnviar
+  Left = 0
+  Top = 0
+  Caption = 'Enviar Email'
+  ClientHeight = 315
+  ClientWidth = 511
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  StyleElements = [seFont, seBorder]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MemoEmail: TMemo
+    Left = 8
+    Top = 125
+    Width = 489
+    Height = 145
+    Lines.Strings = (
+      'Texto que ser'#225' enviado para o e-mail.')
+    TabOrder = 0
+  end
+  object BtnEnviar: TButton
+    Left = 8
+    Top = 278
+    Width = 75
+    Height = 25
+    Caption = 'Enviar'
+    TabOrder = 1
+    OnClick = BtnEnviarClick
+  end
+end
